@@ -1,0 +1,13 @@
+<button *ngIf="!disabled"
+        class="btn"
+        [class.btn-default]="!value"
+        [class.btn-dark]="value"
+        (click)="switch()">
+  {{ value }}
+</button>
+<button *ngIf="disabled"
+        class="btn"
+        [class.btn-default]="!value"
+        [class.btn-dark]="value">
+  {{ value }}
+</button>

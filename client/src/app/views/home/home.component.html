@@ -1,0 +1,49 @@
+<div class="row h-100">
+  <div class="border-right border-secondary h-100 panel panel-left"
+       [class.expanded]="expandedLeft">
+    <ng-container *ngIf="connected">
+      <bin-connected-players (playRequest)="onPlayRequest($event)"></bin-connected-players>
+    </ng-container>
+  </div>
+  <div *ngIf="connected"
+       class="expander expander-left p-2"
+       (click)="expandedLeft=!expandedLeft"
+       [class.expanded]="expandedLeft"
+       [class.other-expanded]="expandedRight">
+    <i *ngIf="!expandedLeft" class="fas fa-lg fa-users"></i>
+    <i *ngIf="!expandedLeft" class="fas fa-lg fa-chevron-right pl-1"></i>
+    <i *ngIf="expandedLeft" class="fas fa-lg fa-chevron-left"></i>
+  </div>
+  <div class="col">
+    <div class="row game-links justify-content-center">
+      <button *ngFor="let n of [3, 4, 5, 6]"
+              class="btn btn-dark m-3 game-link"
+              (click)="play(n)">
+        {{ n }} x {{ n }}
+      </button>
+      <!--large devices only-->
+      <button *ngFor="let n of [7, 8]"
+              class="btn btn-dark m-3 game-link game-link-large"
+              (click)="play(n)">
+        {{ n }} x {{ n }}
+      </button>
+    </div>
+  </div>
+  <div *ngIf="connected"
+       class="expander expander-right p-2"
+       (click)="expandedRight=!expandedRight"
+       [class.expanded]="expandedRight"
+       [class.other-expanded]="expandedLeft">
+    <i *ngIf="!expandedRight" class="fas fa-lg fa-chevron-left pr-1"></i>
+    <i *ngIf="!expandedRight" class="fas fa-lg fa-comments"></i>
+    <i *ngIf="expandedRight" class="fas fa-lg fa-chevron-right" [class.expanded]="expandedRight"></i>
+  </div>
+  <div class="border-left border-secondary h-100 panel panel-right"
+       [class.expanded]="expandedRight">
+    <ng-container *ngIf="connected">
+      <bin-chat></bin-chat>
+    </ng-container>
+  </div>
+</div>
+<bin-confirm-modal></bin-confirm-modal>
+<bin-alert-modal></bin-alert-modal>

@@ -1,0 +1,29 @@
+<div class="d-flex flex-column h-100" *ngIf="connected">
+    <h3>Chat</h3>
+  <div class="d-flex flex-grow-1 flex-column-reverse overflow-auto px-1">
+    <bin-message *ngFor="let msg of messagesService.messages | async" [message]="msg"></bin-message>
+  </div>
+  <div class="px-1 margin-left">
+    <form [formGroup]="form" (submit)="onSubmit()">
+      <div class="form-group m-0">
+        <div class="input-group">
+          <input #message
+                 type="text"
+                 class="form-control"
+                 formControlName="message"
+                 id="message"
+                 autocomplete="off"
+                 placeholder="Message">
+          <label for="message"></label>
+          <div class="input-group-append">
+            <button type="submit"
+                    class="btn btn-light px-3"
+                    [disabled]="form.invalid">
+              <i class="fas fa-paper-plane pr-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

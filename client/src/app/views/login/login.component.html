@@ -1,0 +1,28 @@
+<div *ngIf="loggedIn">
+  <div class="row justify-content-center mt-3">
+    <div class="col">
+      <button routerLink="/home" class="btn btn-dark">
+        <i class="fas fa-play pr-1"></i>
+        Play as {{ username }}
+      </button>
+    </div>
+  </div>
+</div>
+<div (submit)="onSubmit()" class="row justify-content-center mt-3">
+  <form [formGroup]="form">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text"
+             class="form-control"
+             [class.is-invalid]="form.touched && !form.valid"
+             id="username"
+             formControlName="username">
+    </div>
+    <button type="submit"
+            class="btn btn-dark"
+            [disabled]="!form.valid">
+      <i class="fas fa-play pr-1"></i>
+      Play
+    </button>
+  </form>
+</div>

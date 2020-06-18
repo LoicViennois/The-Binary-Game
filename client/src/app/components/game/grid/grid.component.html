@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <table>
+    <tr *ngFor="let r of range">
+      <td *ngFor="let c of range">
+        <bin-box (valueChange)="updateValue(r, c, $event)"></bin-box>
+      </td>
+      <td class="total total-right">
+        <div [class.valid]="rowTot[r] === rowTarget[r]">
+          {{ rowTarget[r] }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td *ngFor="let c of range"
+          class="total total-bottom">
+        <div [class.valid]="colTot[c] === colTarget[c]">
+          {{ colTarget[c] }}
+        </div>
+      </td>
+      <td></td>
+    </tr>
+  </table>
+  <div *ngIf="stopped" class="overlay d-flex justify-content-center align-items-center">
+    <i *ngIf="success" class="fas fa-check fa-5x green"></i>
+    <i *ngIf="opponentWin" class="fas fa-times fa-5x red"></i>
+  </div>
+</div>

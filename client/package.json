@@ -1,0 +1,49 @@
+{
+  "name": "the-binary-game-client",
+  "version": "0.0.0",
+  "author": "Loïc Viennois",
+  "description": "The Binary Game Client",
+  "license": "GPLv3",
+  "main": "main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build:prod": "ng build --prod",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^8.2.13",
+    "@angular/common": "^8.2.13",
+    "@angular/compiler": "^8.2.13",
+    "@angular/core": "^8.2.13",
+    "@angular/fire": "^5.2.3",
+    "@angular/forms": "^8.2.13",
+    "@angular/platform-browser": "^8.2.13",
+    "@angular/platform-browser-dynamic": "^8.2.13",
+    "@angular/pwa": "^0.803.17",
+    "@angular/router": "^8.2.13",
+    "@angular/service-worker": "^8.2.13",
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "@ng-bootstrap/ng-bootstrap": "^5.1.2",
+    "bootstrap": "~4.3.1",
+    "firebase": "^7.3.0",
+    "lodash": "~4.17.15",
+    "rxjs": "~6.5.3",
+    "uuid": "~3.3.3",
+    "zone.js": "^0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.803.17",
+    "@angular/cli": "^8.3.17",
+    "@angular/compiler-cli": "~8.2.13",
+    "@angular/language-service": "^8.2.13",
+    "@types/lodash": "^4.14.144",
+    "@types/node": "^12.12.5",
+    "@types/uuid": "~3.4.6",
+    "codelyzer": "~5.2.0",
+    "ts-node": "^8.4.1",
+    "tslint": "~5.20.0",
+    "typescript": "~3.5.3"
+  }
+}

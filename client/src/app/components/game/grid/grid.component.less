@@ -1,0 +1,48 @@
+td {
+  font-weight: bold;
+  width: 60px;
+  height: 60px;
+  &.total {
+    &.total-right {
+      border-left: 1px solid #646464;
+    }
+    &.total-bottom {
+      border-top: 1px solid #646464;
+    }
+    & div {
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: .25rem;
+      height: 90%;
+      width: 90%;
+      &.valid {
+        color: white;
+        background-color: #31843B;
+      }
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.10);
+}
+
+.green {
+  color: #31843B;
+}
+
+.red {
+  color: #db3545;
+}

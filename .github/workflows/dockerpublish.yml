@@ -1,0 +1,36 @@
+name: Docker
+
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - v*
+
+env:
+#  IMAGE_NAME_SERVER: the-binary-game-server
+  IMAGE_NAME_CLIENT: the-binary-game-client
+
+jobs:
+  push_to_docker_hub:
+    name: Build Docker image and push to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+#      - name: Push server to Docker Hub
+#        uses: docker/build-push-action@v1
+#        with:
+#          path: server
+#          username: ${{ secrets.DOCKER_USERNAME }}
+#          password: ${{ secrets.DOCKER_PASSWORD }}
+#          repository: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME_SERVER }}
+#          tag_with_ref: true
+      - name: Push client to Docker Hub
+        uses: docker/build-push-action@v1
+        with:
+          path: client
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME_CLIENT }}
+          tag_with_ref: true

@@ -1,0 +1,68 @@
+<div class="row h-100">
+
+  <!--Timer-->
+  <div class="border-right border-secondary h-100 panel panel-left"
+       [class.expanded]="expandedLeft">
+    <h2 class="row justify-content-center pt-2">
+      <span *ngIf="!gameFinished" class="timer py-2">{{ timerService.time | async | date:'mm:ss:SS' }}</span>
+      <span *ngIf="gameFinished" class="timer py-2">{{ winTime | date:'mm:ss:SS' }}</span>
+    </h2>
+    <div class="row justify-content-center pt-2">
+      <div *ngIf="opponent" class="ml-3">
+        <bin-grid-opponent [player]="opponent" [size]="size"></bin-grid-opponent>
+      </div>
+    </div>
+  </div>
+  <div class="expander expander-left p-2"
+       (click)="expandedLeft=!expandedLeft"
+       [class.expanded]="expandedLeft"
+       [class.other-expanded]="expandedRight">
+    <i *ngIf="!expandedLeft" class="far fa-lg fa-clock"></i>
+    <i *ngIf="!expandedLeft" class="fas fa-lg fa-chevron-right pl-1"></i>
+    <i *ngIf="expandedLeft" class="fas fa-lg fa-chevron-left"></i>
+  </div>
+
+  <!--Game-->
+  <div class="col d-flex flex-column align-items-center">
+    <div>
+      <bin-grid [size]="size" [stopped]="stopped" (completed)="onCompleted($event)"></bin-grid>
+    </div>
+    <div class="pt-2">
+      <button *ngIf="!opponent && !stopped" class="btn btn-danger mx-2" (click)="stopGame()" >
+        <i class="fas fa-ban"></i>
+        Stop
+      </button>
+      <button *ngIf="stopped" class="btn btn-dark mx-2" (click)="endGame()" >
+        <i class="fas fa-home"></i>
+        Home
+      </button>
+      <button *ngIf="stopped" class="btn btn-restart mx-2" (click)="restart()">
+        <i class="fas fa-undo"></i>
+        Restart
+      </button>
+    </div>
+    <div class="flex-grow-1"></div>
+
+    <!--small devices only-->
+    <h2 class="row justify-content-center d-lg-none mb-5">
+      <span *ngIf="!gameFinished" class="timer py-2">{{ timerService.time | async | date:'mm:ss:SS' }}</span>
+      <span *ngIf="gameFinished" class="timer py-2">{{ winTime | date:'mm:ss:SS' }}</span>
+    </h2>
+
+  </div>
+
+  <!--High scores-->
+  <div class="expander expander-right p-2"
+       (click)="expandedRight=!expandedRight"
+       [class.expanded]="expandedRight"
+       [class.other-expanded]="expandedLeft">
+    <i *ngIf="!expandedRight" class="fas fa-lg fa-chevron-left pr-1"></i>
+    <i *ngIf="!expandedRight" class="fas fa-lg fa-trophy"></i>
+    <i *ngIf="expandedRight" class="fas fa-lg fa-chevron-right"></i>
+  </div>
+  <div class="border-left border-secondary h-100 panel panel-right"
+       [class.expanded]="expandedRight">
+    <bin-high-scores [game]="size"></bin-high-scores>
+  </div>
+
+</div>

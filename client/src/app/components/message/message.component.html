@@ -1,0 +1,17 @@
+<div class="container">
+  <div *ngIf="someoneElse" class="row mb-1">
+    <div class="col-auto px-0">
+      <div class="user text-left font-weight-bold pl-1">
+        {{ message.sender.name }}
+      </div>
+      <div class="msg py-1 px-3">
+        {{ message.text }}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="yourself" class="row justify-content-end mb-1">
+    <div class="col-auto msg py-1 px-3">
+      {{ message.text }}
+    </div>
+  </div>
+</div>

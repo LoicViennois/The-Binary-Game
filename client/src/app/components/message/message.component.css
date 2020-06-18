@@ -1,0 +1,10 @@
+.msg {
+  text-wrap: normal;
+  border-radius: 0.5rem;
+  background-color: white;
+  max-width: 100%;
+}
+
+.user {
+  font-size: 0.85rem;
+}

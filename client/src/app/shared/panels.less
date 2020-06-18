@@ -1,0 +1,72 @@
+@import "./variables";
+
+@media (min-width: 992px) {
+  .panel {
+    width: 25%;
+  }
+
+  .expander {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  @panel-width: 100%;
+  .panel {
+    width: @panel-width;
+    background-color: @background-color;
+    position: absolute;
+    z-index: 20;
+    border: none !important;
+    transition: margin 300ms;
+
+    &.panel-left {
+      left: 0;
+      margin-left: -@panel-width;
+
+      &.expanded {
+        margin-left: 0;
+      }
+    }
+
+    &.panel-right {
+      right: 0;
+      margin-right: -@panel-width;
+
+      &.expanded {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .expander {
+    cursor: pointer;
+    z-index: 30;
+
+    &.expander-left {
+      transition: left 300ms;
+      position: fixed;
+      bottom: 3px;
+      left: 2px;
+      &.expanded {
+        left: calc(100% - 45px);
+      }
+      &.other-expanded {
+        display: none;
+      }
+    }
+
+    &.expander-right {
+      transition: right 300ms;
+      position: fixed;
+      bottom: 3px;
+      right: 2px;
+      &.expanded {
+        right: calc(100% - 45px);
+      }
+      &.other-expanded {
+        display: none;
+      }
+    }
+  }
+}
