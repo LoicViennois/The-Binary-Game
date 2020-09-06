@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core'
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Observable, Subject } from 'rxjs'
 import { switchMap } from 'rxjs/operators'
 
 import { HighScore } from '../models/high-scores.model'
 import { getUser, Player } from '../models/player.model'
+import { AngularFirestore, AngularFirestoreCollection } from '../mocks/angular-fire'
 
 
 @Injectable()
@@ -23,7 +23,7 @@ export class HighScoresService {
           }).valueChanges()
         }
       )
-    )
+    ) as Observable<HighScore[]>
   }
 
   get (game: number) {

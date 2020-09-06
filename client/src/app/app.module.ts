@@ -2,10 +2,6 @@ import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { ReactiveFormsModule } from '@angular/forms'
 import { ServiceWorkerModule } from '@angular/service-worker'
-import { AngularFireModule } from '@angular/fire'
-import { AngularFireDatabaseModule } from '@angular/fire/database'
-import { AngularFirestoreModule } from '@angular/fire/firestore'
-import { AngularFireAuthModule } from '@angular/fire/auth'
 
 import { environment } from '../environments/environment'
 import { AppComponent } from './app.component'
@@ -32,6 +28,7 @@ import { MessagesService } from './services/messages.service'
 import { MultiplayerService } from './services/multiplayer.service'
 import { TimerService } from './services/timer.service'
 import { WebsocketService } from './services/websocket.service'
+import { AngularFireAuth, AngularFireDatabase, AngularFirestore } from './mocks/angular-fire'
 
 
 @NgModule({
@@ -56,10 +53,6 @@ import { WebsocketService } from './services/websocket.service'
     ReactiveFormsModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFirestoreModule,
-    AngularFireAuthModule
   ],
   providers: [
     AuthGuard,
@@ -71,6 +64,9 @@ import { WebsocketService } from './services/websocket.service'
     TimerService,
     PlayersService,
     WebsocketService,
+    AngularFireAuth,
+    AngularFirestore,
+    AngularFireDatabase,
   ],
   bootstrap: [AppComponent]
 })

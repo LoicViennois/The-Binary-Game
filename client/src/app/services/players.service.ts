@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core'
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { sortBy } from 'lodash'
 
 import { Player } from '../models/player.model'
 import { AuthService } from './auth.service'
+import { AngularFirestore, AngularFirestoreCollection } from '../mocks/angular-fire'
 
 
 @Injectable()

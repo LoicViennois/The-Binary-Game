@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { AngularFireDatabase } from '@angular/fire/database'
+import { AngularFireDatabase } from '../mocks/angular-fire'
 
 @Injectable({
   providedIn: 'root'

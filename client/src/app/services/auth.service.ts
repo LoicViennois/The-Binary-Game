@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core'
-import { AngularFireAuth } from '@angular/fire/auth'
 import { interval } from 'rxjs'
 import { takeWhile } from 'rxjs/operators'
 
 import { createPlayer, Player } from '../models/player.model'
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore'
+import { AngularFireAuth, AngularFirestore, AngularFirestoreCollection } from '../mocks/angular-fire'
 
 
 @Injectable()
@@ -24,9 +23,9 @@ export class AuthService {
   }
 
   async login (username: string) {
-    const credentials = await this.afAuth.auth.signInAnonymously()
+    const uid = await this.afAuth.auth.signInAnonymously()
     this.player = createPlayer({
-      uid: credentials.user.uid,
+      uid: uid,
       name: username,
     })
     this.playersStore.doc(this.player.uid).set(this.player)
