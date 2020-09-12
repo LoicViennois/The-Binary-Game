@@ -11,7 +11,7 @@ import { HighScoresService } from '../../../services/high-scores.service'
 export class HighScoresComponent implements OnInit, AfterViewInit {
   @Input() game: number
 
-  constructor (private highScoresService: HighScoresService) {
+  constructor (public highScoresService: HighScoresService) {
   }
 
   ngOnInit () {
