@@ -11,11 +11,11 @@ import { AngularFirestore, AngularFirestoreCollection } from '../mocks/angular-f
 @Injectable()
 export class PlayersService {
   players: Observable<Player[]>
-  private playersStore: AngularFirestoreCollection<Player>
+  private playersStore: AngularFirestoreCollection<Player[]>
 
   constructor (private afStore: AngularFirestore,
                private authService: AuthService) {
-    this.playersStore = this.afStore.collection('players', (ref) => {
+    this.playersStore = this.afStore.collection<Player[]>('players', (ref) => {
       return ref.where('lastCheckin', '>', Date.now() - this.authService.timeoutInterval)
     })
     this.players = this.playersStore.valueChanges().pipe(

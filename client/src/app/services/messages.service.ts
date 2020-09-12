@@ -9,10 +9,10 @@ import { AngularFirestore, AngularFirestoreCollection } from '../mocks/angular-f
 @Injectable()
 export class MessagesService {
   messages: Observable<Message[]>
-  private messageStore: AngularFirestoreCollection<Message>
+  private messageStore: AngularFirestoreCollection<Message[]>
 
   constructor (private afStore: AngularFirestore) {
-    this.messageStore = this.afStore.collection('messages', (ref) => {
+    this.messageStore = this.afStore.collection<Message[]>('messages', (ref) => {
       return ref.orderBy('timestamp', 'desc').limit(100)
     })
     this.messages = this.messageStore.valueChanges()

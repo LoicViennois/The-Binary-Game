@@ -11,14 +11,14 @@ import { AngularFirestore, AngularFirestoreCollection } from '../mocks/angular-f
 export class HighScoresService {
   highScores: Observable<HighScore[]>
   private gameFilter: Subject<number>
-  private highScoresStore: AngularFirestoreCollection<HighScore>
+  private highScoresStore: AngularFirestoreCollection<HighScore[]>
 
   constructor (private afStore: AngularFirestore) {
     this.highScoresStore = this.afStore.collection('high-scores')
     this.gameFilter = new Subject()
     this.highScores = this.gameFilter.pipe(
       switchMap(game => {
-          return this.afStore.collection<HighScore>('high-scores', (ref) => {
+          return this.afStore.collection<HighScore[]>('high-scores', (ref) => {
             return ref.orderBy('time', 'asc').where('game', '==', game).limit(10)
           }).valueChanges()
         }
