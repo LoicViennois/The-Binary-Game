@@ -1,11 +1,11 @@
 version: '2.4'
 
 services:
-  server:
-    image: loicviennois/the-binary-game-server
-    build: ./server
-    ports:
-      - '3000:3000'
+#  server:
+#    image: loicviennois/the-binary-game-server
+#    build: ./server
+#    ports:
+#      - '3000:3000'
   client:
     image: loicviennois/the-binary-game-client
     build: ./client
