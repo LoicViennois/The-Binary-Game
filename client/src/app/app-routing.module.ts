@@ -5,12 +5,20 @@ import { LoginComponent } from './views/login/login.component'
 import { HomeComponent } from './views/home/home.component'
 import { GameComponent } from './views/game/game.component'
 import { AuthGuard } from './services/auth.guard'
+import { ModalContainerComponent } from './components/modals/modal-container/modal-container.component'
+import { CopyrightComponent } from './components/modals/copyright/copyright.component'
 
 
 const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'copyright',
+    component: ModalContainerComponent,
+    data: { component: CopyrightComponent },
+    outlet: 'modal'
   },
   {
     path: 'home',

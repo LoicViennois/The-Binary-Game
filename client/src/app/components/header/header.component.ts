@@ -7,7 +7,7 @@ import { AuthService } from '../../services/auth.service'
 @Component({
   selector: 'bin-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
 
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get onLoginPage (): boolean {
-    return this.router.url === '/login'
+    return this.router.url.startsWith('/login')
   }
 
   get username (): string {
