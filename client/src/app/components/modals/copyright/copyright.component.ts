@@ -1,7 +1,7 @@
-import { Component } from '@angular/core'
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap'
+import { Component } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { environment } from '../../../../environments/environment'
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'bin-copyright',
@@ -9,9 +9,9 @@ import { environment } from '../../../../environments/environment'
   styleUrls: ['./copyright.component.less']
 })
 export class CopyrightComponent {
-  readonly version: string = environment.version
+  readonly version: string = environment.version;
 
-  constructor (public activeModal: NgbActiveModal) {
+  constructor(public activeModal: NgbActiveModal) {
   }
 
 }

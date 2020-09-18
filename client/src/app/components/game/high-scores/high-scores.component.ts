@@ -1,6 +1,6 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core'
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
-import { HighScoresService } from '../../../services/high-scores.service'
+import { HighScoresService } from '../../../services/high-scores.service';
 
 
 @Component({
@@ -9,16 +9,16 @@ import { HighScoresService } from '../../../services/high-scores.service'
   styleUrls: ['./high-scores.component.css']
 })
 export class HighScoresComponent implements OnInit, AfterViewInit {
-  @Input() game: number
+  @Input() game: number;
 
-  constructor (public highScoresService: HighScoresService) {
+  constructor(public highScoresService: HighScoresService) {
   }
 
-  ngOnInit () {
+  ngOnInit(): void {
   }
 
-  ngAfterViewInit() {
-    this.highScoresService.get(this.game)
+  ngAfterViewInit(): void {
+    this.highScoresService.get(this.game);
   }
 
 }

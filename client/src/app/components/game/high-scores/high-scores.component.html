@@ -2,14 +2,14 @@
 <table class="table table-sm">
   <thead>
   <tr>
-    <th scope="col" class="text-right">#</th>
+    <th class="text-right" scope="col">#</th>
     <th scope="col">Time</th>
-    <th scope="col" class="text-left">Name</th>
+    <th class="text-left" scope="col">Name</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let score of highScoresService.highScores | async ; let i = index">
-    <th scope="row" class="text-right">{{ i + 1 }}</th>
+    <th class="text-right" scope="row">{{ i + 1 }}</th>
     <td class="text-center">{{ score.time | date:'mm:ss:SS' }}</td>
     <td class="text-left">{{ score.user.name }}</td>
   </tr>

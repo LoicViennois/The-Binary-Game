@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core'
-import { Router } from '@angular/router'
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service'
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -11,24 +11,24 @@ import { AuthService } from '../../services/auth.service'
 })
 export class HeaderComponent implements OnInit {
 
-  constructor (public authService: AuthService,
-               private router: Router) {
+  constructor(public authService: AuthService,
+              private router: Router) {
   }
 
-  ngOnInit () {
+  get onLoginPage(): boolean {
+    return this.router.url.startsWith('/login');
   }
 
-  get onLoginPage (): boolean {
-    return this.router.url.startsWith('/login')
+  get username(): string {
+    return this.authService.player ? this.authService.player.name : '';
   }
 
-  get username (): string {
-    return this.authService.player ? this.authService.player.name : ''
+  ngOnInit(): void {
   }
 
-  async logout () {
-    await this.authService.logout()
-    this.router.navigate(['/login']).then()
+  async logout(): Promise<void> {
+    await this.authService.logout();
+    this.router.navigate(['/login']).then();
   }
 
 }

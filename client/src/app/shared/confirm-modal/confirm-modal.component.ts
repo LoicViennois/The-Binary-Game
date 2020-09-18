@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core'
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
+import { Component, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'bin-confirm-modal',
@@ -7,18 +7,18 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap'
   styleUrls: ['./confirm-modal.component.css']
 })
 export class ConfirmModalComponent {
-  title: string
-  message: string
+  title: string;
+  message: string;
 
-  @ViewChild('modal', { static: true }) modal
+  @ViewChild('modal', { static: true }) modal;
 
-  constructor (private modalService: NgbModal) {
+  constructor(private modalService: NgbModal) {
   }
 
-  open (title: string, message: string): Promise<any> {
-    this.title = title
-    this.message = message
-    return this.modalService.open(this.modal).result
+  open(title: string, message: string): Promise<any> {
+    this.title = title;
+    this.message = message;
+    return this.modalService.open(this.modal).result;
   }
 
 }

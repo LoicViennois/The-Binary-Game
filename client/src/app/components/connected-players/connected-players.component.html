@@ -2,11 +2,11 @@
   <h3>Connected players</h3>
   <div *ngFor="let user of playersService.players | async"
        class="row justify-content-center">
-    <button class="btn mt-2"
+    <button (click)="playWith(user)"
             [class.btn-light]="!isOpponent(user)"
             [class.btn-success]="isOpponent(user)"
-            (click)="playWith(user)"
-            [disabled]="user.playing || inParty(user) || isYou(user)">
+            [disabled]="user.playing || inParty(user) || isYou(user)"
+            class="btn mt-2">
       {{ user.name }}
       <span *ngIf="user.playing && !inParty(user)">(In game)</span>
       <span *ngIf="inParty(user)">(In party)</span>

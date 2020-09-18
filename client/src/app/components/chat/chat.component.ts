@@ -1,9 +1,9 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { MessagesService } from '../../services/messages.service'
-import { AuthService } from '../../services/auth.service'
-import { DbService } from '../../services/db.service'
+import { MessagesService } from '../../services/messages.service';
+import { AuthService } from '../../services/auth.service';
+import { DbService } from '../../services/db.service';
 
 
 @Component({
@@ -12,34 +12,30 @@ import { DbService } from '../../services/db.service'
   styleUrls: ['./chat.component.less']
 })
 export class ChatComponent implements OnInit {
-  form: FormGroup
+  form: FormGroup;
 
-  @ViewChild('message', { static: false }) inputField: ElementRef
+  @ViewChild('message', { static: false }) inputField: ElementRef;
 
-  constructor (private messagesService: MessagesService,
-               private authService: AuthService,
-               private fb: FormBuilder,
-               private dbService: DbService) {
+  constructor(public messagesService: MessagesService,
+              private authService: AuthService,
+              private fb: FormBuilder,
+              private dbService: DbService) {
   }
 
-  ngOnInit () {
+  get connected(): boolean {
+    return this.dbService.connected;
+  }
+
+  ngOnInit(): void {
     this.form = this.fb.group({
       message: ['', Validators.required],
-    })
+    });
   }
 
-  async onSubmit () {
-    this.inputField.nativeElement.focus()
-    await this.messagesService.send(this.authService.player, this.form.value.message)
-    this.form.reset()
-  }
-
-  get username (): string {
-    return this.authService.player.name
-  }
-
-  get connected (): boolean {
-    return this.dbService.connected
+  async onSubmit(): Promise<void> {
+    this.inputField.nativeElement.focus();
+    await this.messagesService.send(this.authService.player, this.form.value.message);
+    this.form.reset();
   }
 
 }

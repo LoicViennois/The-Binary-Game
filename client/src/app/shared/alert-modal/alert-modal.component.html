@@ -1,12 +1,12 @@
 <ng-template #modal let-close="close" let-dismiss="dismiss">
   <div class="modal-header">
     <p class="modal-title">{{ title }}</p>
-    <button type="button" class="close" (click)="dismiss()">&times;</button>
+    <button (click)="dismiss()" class="close" type="button">&times;</button>
   </div>
   <div class="modal-body">
     <p>{{ message }}</p>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-dark" (click)="close()">Ok</button>
+    <button (click)="close()" class="btn btn-dark" type="button">Ok</button>
   </div>
 </ng-template>

@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core'
+import { Component, Input, OnInit } from '@angular/core';
 
-import { Message } from '../../models/message.model'
-import { AuthService } from '../../services/auth.service'
+import { Message } from '../../models/message.model';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
@@ -10,20 +10,20 @@ import { AuthService } from '../../services/auth.service'
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent implements OnInit {
-  @Input() message: Message
+  @Input() message: Message;
 
-  constructor (private authService: AuthService) {
-  }
-
-  ngOnInit () {
+  constructor(private authService: AuthService) {
   }
 
   get yourself(): boolean {
-    return this.message.sender.uid === this.authService.player.uid
+    return this.message.sender.uid === this.authService.player.uid;
   }
 
   get someoneElse(): boolean {
-    return !this.yourself
+    return !this.yourself;
+  }
+
+  ngOnInit(): void {
   }
 
 }

@@ -1,7 +1,7 @@
 <div *ngIf="loggedIn">
   <div class="row justify-content-center mt-3">
     <div class="col">
-      <button routerLink="/home" class="btn btn-dark">
+      <button class="btn btn-dark" routerLink="/home">
         <i class="fas fa-play pr-1"></i>
         Play as {{ username }}
       </button>
@@ -12,15 +12,15 @@
   <form [formGroup]="form">
     <div class="form-group">
       <label for="username">Username</label>
-      <input type="text"
+      <input [class.is-invalid]="form.touched && !form.valid"
              class="form-control"
-             [class.is-invalid]="form.touched && !form.valid"
+             formControlName="username"
              id="username"
-             formControlName="username">
+             type="text">
     </div>
-    <button type="submit"
+    <button [disabled]="!form.valid"
             class="btn btn-dark"
-            [disabled]="!form.valid">
+            type="submit">
       <i class="fas fa-play pr-1"></i>
       Play
     </button>

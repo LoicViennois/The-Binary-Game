@@ -1,7 +1,7 @@
-import { User } from './user.model'
+import { User } from './user.model';
 
 export interface Message {
-  sender: User,
-  text: string,
-  timestamp: number
+  sender: User;
+  text: string;
+  timestamp: number;
 }

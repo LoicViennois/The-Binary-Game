@@ -4,4 +4,4 @@
 
 The Binary Game is a game to play with binary numbers, solo or with friends !
 
-The Binary Game is built on [Angular 9](https://angular.io).
+The Binary Game is built on [Angular 10](https://angular.io).

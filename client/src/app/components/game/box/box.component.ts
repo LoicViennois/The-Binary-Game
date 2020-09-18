@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'bin-box',
@@ -6,21 +6,21 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core'
   styleUrls: ['./box.component.less']
 })
 export class BoxComponent implements OnInit {
-  @Input() value: number
-  @Input() disabled = false
-  @Output() valueChange = new EventEmitter<number>()
+  @Input() value: number;
+  @Input() disabled = false;
+  @Output() valueChange = new EventEmitter<number>();
 
-  ngOnInit () {
-    this.reset()
+  ngOnInit(): void {
+    this.reset();
   }
 
-  reset() {
-    this.value = 0
+  reset(): void {
+    this.value = 0;
   }
 
-  switch () {
-    this.value = this.value ? 0 : 1
-    this.valueChange.emit(this.value)
+  switch(): void {
+    this.value = this.value ? 0 : 1;
+    this.valueChange.emit(this.value);
   }
 
 }

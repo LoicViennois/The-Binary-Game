@@ -1,13 +1,13 @@
-<button *ngIf="!disabled"
-        class="btn"
-        [class.btn-default]="!value"
+<button (click)="switch()"
+        *ngIf="!disabled"
         [class.btn-dark]="value"
-        (click)="switch()">
+        [class.btn-default]="!value"
+        class="btn">
   {{ value }}
 </button>
 <button *ngIf="disabled"
-        class="btn"
+        [class.btn-dark]="value"
         [class.btn-default]="!value"
-        [class.btn-dark]="value">
+        class="btn">
   {{ value }}
 </button>

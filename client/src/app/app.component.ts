@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component } from '@angular/core';
 
 
 @Component({
@@ -8,7 +8,7 @@ import { Component } from '@angular/core'
 })
 export class AppComponent {
 
-  constructor () {
+  constructor() {
   }
 
 }

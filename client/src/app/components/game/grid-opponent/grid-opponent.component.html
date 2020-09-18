@@ -7,7 +7,7 @@
   <table class="scale mt-3">
     <tr *ngFor="let r of range">
       <td *ngFor="let c of range">
-        <bin-box [value]="grid[r][c]" [disabled]="true"></bin-box>
+        <bin-box [disabled]="true" [value]="grid[r][c]"></bin-box>
       </td>
       <td class="total total-right">
         <div [class.valid]="rowValid[r]">

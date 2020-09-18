@@ -16,8 +16,8 @@
   </div>
   <div class="col-5 col-lg-3 d-flex justify-content-center align-items-center px-0 px-lg-3">
     <div *ngIf="onLoginPage">
-      <a href="https://github.com/LoicViennois/The-Binary-Game"
-         class="mx-2 text-color-dark">
+      <a class="mx-2 text-color-dark"
+         href="https://github.com/LoicViennois/The-Binary-Game">
         <i class="title fa-lg fab fa-github"></i>
       </a>
       <a [routerLink]="[{ outlets: { primary: [''], modal: ['copyright'] } }]"
@@ -25,8 +25,8 @@
         <i class="title fa-lg fas fa-copyright"></i>
       </a>
     </div>
-    <button *ngIf="!onLoginPage"
-            (click)="logout()"
+    <button (click)="logout()"
+            *ngIf="!onLoginPage"
             class="btn btn-outline-dark">
       <i class="fas fa-user pr-1"></i>
       <!--large devices only-->

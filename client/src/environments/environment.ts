@@ -1,4 +1,4 @@
-import { version } from '../../package.json'
+import { version } from '../../package.json';
 
 export const environment = {
   production: false,
@@ -13,4 +13,4 @@ export const environment = {
     appId: '1:575506156958:web:11b7726d62291a1f7bda8f',
     measurementId: 'G-48GF49MXNR'
   }
-}
+};

@@ -1,10 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { Player } from '../../models/player.model'
-import { PlayersService } from '../../services/players.service'
-import { MultiplayerService } from '../../services/multiplayer.service'
-import { AuthService } from '../../services/auth.service'
-import { DbService } from '../../services/db.service'
+import { Player } from '../../models/player.model';
+import { PlayersService } from '../../services/players.service';
+import { MultiplayerService } from '../../services/multiplayer.service';
+import { AuthService } from '../../services/auth.service';
+import { DbService } from '../../services/db.service';
 
 
 @Component({
@@ -14,43 +14,43 @@ import { DbService } from '../../services/db.service'
 })
 export class ConnectedPlayersComponent implements OnInit {
 
-  @Output() playRequest = new EventEmitter<Player>()
+  @Output() playRequest = new EventEmitter<Player>();
 
-  constructor (public playersService: PlayersService,
-               private multiplayerService: MultiplayerService,
-               private authService: AuthService,
-               private dbService: DbService) {
+  constructor(public playersService: PlayersService,
+              private multiplayerService: MultiplayerService,
+              private authService: AuthService,
+              private dbService: DbService) {
   }
 
-  ngOnInit () {
+  get connected(): boolean {
+    return this.dbService.connected;
   }
 
-  playWith (player: Player) {
-    this.playRequest.emit(player)
+  private get player(): Player {
+    return this.authService.player;
   }
 
-  isOpponent (player: Player): boolean {
-    return this.opponent ? player.uid === this.opponent.uid : false
+  private get opponent(): Player {
+    return this.multiplayerService.opponent;
   }
 
-  inParty (player: Player): boolean {
-    return player.inParty && (this.opponent === null || player.uid !== this.opponent.uid)
+  ngOnInit(): void {
   }
 
-  isYou (player: Player): boolean {
-    return player.uid === this.player.uid
+  playWith(player: Player): void {
+    this.playRequest.emit(player);
   }
 
-  get connected (): boolean {
-    return this.dbService.connected
+  isOpponent(player: Player): boolean {
+    return this.opponent ? player.uid === this.opponent.uid : false;
   }
 
-  private get player (): Player {
-    return this.authService.player
+  inParty(player: Player): boolean {
+    return player.inParty && (this.opponent === null || player.uid !== this.opponent.uid);
   }
 
-  private get opponent (): Player {
-    return this.multiplayerService.opponent
+  isYou(player: Player): boolean {
+    return player.uid === this.player.uid;
   }
 
 }

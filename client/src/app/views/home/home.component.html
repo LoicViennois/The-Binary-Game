@@ -1,45 +1,45 @@
 <div class="row h-100">
-  <div class="border-right border-secondary h-100 panel panel-left"
-       [class.expanded]="expandedLeft">
+  <div [class.expanded]="expandedLeft"
+       class="border-right border-secondary h-100 panel panel-left">
     <ng-container *ngIf="connected">
       <bin-connected-players (playRequest)="onPlayRequest($event)"></bin-connected-players>
     </ng-container>
   </div>
-  <div *ngIf="connected"
-       class="expander expander-left p-2"
-       (click)="expandedLeft=!expandedLeft"
+  <div (click)="expandedLeft=!expandedLeft"
+       *ngIf="connected"
        [class.expanded]="expandedLeft"
-       [class.other-expanded]="expandedRight">
+       [class.other-expanded]="expandedRight"
+       class="expander expander-left p-2">
     <i *ngIf="!expandedLeft" class="fas fa-lg fa-users"></i>
     <i *ngIf="!expandedLeft" class="fas fa-lg fa-chevron-right pl-1"></i>
     <i *ngIf="expandedLeft" class="fas fa-lg fa-chevron-left"></i>
   </div>
   <div class="col">
     <div class="row game-links justify-content-center">
-      <button *ngFor="let n of [3, 4, 5, 6]"
-              class="btn btn-dark m-3 game-link"
-              (click)="play(n)">
+      <button (click)="play(n)"
+              *ngFor="let n of [3, 4, 5, 6]"
+              class="btn btn-dark m-3 game-link">
         {{ n }} x {{ n }}
       </button>
       <!--large devices only-->
-      <button *ngFor="let n of [7, 8]"
-              class="btn btn-dark m-3 game-link game-link-large"
-              (click)="play(n)">
+      <button (click)="play(n)"
+              *ngFor="let n of [7, 8]"
+              class="btn btn-dark m-3 game-link game-link-large">
         {{ n }} x {{ n }}
       </button>
     </div>
   </div>
-  <div *ngIf="connected"
-       class="expander expander-right p-2"
-       (click)="expandedRight=!expandedRight"
+  <div (click)="expandedRight=!expandedRight"
+       *ngIf="connected"
        [class.expanded]="expandedRight"
-       [class.other-expanded]="expandedLeft">
+       [class.other-expanded]="expandedLeft"
+       class="expander expander-right p-2">
     <i *ngIf="!expandedRight" class="fas fa-lg fa-chevron-left pr-1"></i>
     <i *ngIf="!expandedRight" class="fas fa-lg fa-comments"></i>
-    <i *ngIf="expandedRight" class="fas fa-lg fa-chevron-right" [class.expanded]="expandedRight"></i>
+    <i *ngIf="expandedRight" [class.expanded]="expandedRight" class="fas fa-lg fa-chevron-right"></i>
   </div>
-  <div class="border-left border-secondary h-100 panel panel-right"
-       [class.expanded]="expandedRight">
+  <div [class.expanded]="expandedRight"
+       class="border-left border-secondary h-100 panel panel-right">
     <ng-container *ngIf="connected">
       <bin-chat></bin-chat>
     </ng-container>

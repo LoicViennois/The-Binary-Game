@@ -1,8 +1,8 @@
 <div class="row h-100">
 
   <!--Timer-->
-  <div class="border-right border-secondary h-100 panel panel-left"
-       [class.expanded]="expandedLeft">
+  <div [class.expanded]="expandedLeft"
+       class="border-right border-secondary h-100 panel panel-left">
     <h2 class="row justify-content-center pt-2">
       <span *ngIf="!gameFinished" class="timer py-2">{{ timerService.time | async | date:'mm:ss:SS' }}</span>
       <span *ngIf="gameFinished" class="timer py-2">{{ winTime | date:'mm:ss:SS' }}</span>
@@ -13,10 +13,10 @@
       </div>
     </div>
   </div>
-  <div class="expander expander-left p-2"
-       (click)="expandedLeft=!expandedLeft"
+  <div (click)="expandedLeft=!expandedLeft"
        [class.expanded]="expandedLeft"
-       [class.other-expanded]="expandedRight">
+       [class.other-expanded]="expandedRight"
+       class="expander expander-left p-2">
     <i *ngIf="!expandedLeft" class="far fa-lg fa-clock"></i>
     <i *ngIf="!expandedLeft" class="fas fa-lg fa-chevron-right pl-1"></i>
     <i *ngIf="expandedLeft" class="fas fa-lg fa-chevron-left"></i>
@@ -25,18 +25,18 @@
   <!--Game-->
   <div class="col d-flex flex-column align-items-center">
     <div>
-      <bin-grid [size]="size" [stopped]="stopped" (completed)="onCompleted($event)"></bin-grid>
+      <bin-grid (completed)="onCompleted($event)" [size]="size" [stopped]="stopped"></bin-grid>
     </div>
     <div class="pt-2">
-      <button *ngIf="!opponent && !stopped" class="btn btn-danger mx-2" (click)="stopGame()" >
+      <button (click)="stopGame()" *ngIf="!opponent && !stopped" class="btn btn-danger mx-2">
         <i class="fas fa-ban"></i>
         Stop
       </button>
-      <button *ngIf="stopped" class="btn btn-dark mx-2" (click)="endGame()" >
+      <button (click)="endGame()" *ngIf="stopped" class="btn btn-dark mx-2">
         <i class="fas fa-home"></i>
         Home
       </button>
-      <button *ngIf="stopped" class="btn btn-restart mx-2" (click)="restart()">
+      <button (click)="restart()" *ngIf="stopped" class="btn btn-restart mx-2">
         <i class="fas fa-undo"></i>
         Restart
       </button>
@@ -52,16 +52,16 @@
   </div>
 
   <!--High scores-->
-  <div class="expander expander-right p-2"
-       (click)="expandedRight=!expandedRight"
+  <div (click)="expandedRight=!expandedRight"
        [class.expanded]="expandedRight"
-       [class.other-expanded]="expandedLeft">
+       [class.other-expanded]="expandedLeft"
+       class="expander expander-right p-2">
     <i *ngIf="!expandedRight" class="fas fa-lg fa-chevron-left pr-1"></i>
     <i *ngIf="!expandedRight" class="fas fa-lg fa-trophy"></i>
     <i *ngIf="expandedRight" class="fas fa-lg fa-chevron-right"></i>
   </div>
-  <div class="border-left border-secondary h-100 panel panel-right"
-       [class.expanded]="expandedRight">
+  <div [class.expanded]="expandedRight"
+       class="border-left border-secondary h-100 panel panel-right">
     <bin-high-scores [game]="size"></bin-high-scores>
   </div>
 

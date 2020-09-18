@@ -20,6 +20,6 @@ FROM nginx:stable as prod
 
 RUN apt-get update && apt-get install --no-install-recommends -y curl
 
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/the-binary-game /usr/share/nginx/html
 
 HEALTHCHECK CMD curl -f http://localhost/ || exit 1

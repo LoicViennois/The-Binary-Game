@@ -1,4 +1,4 @@
-import { Player } from './player.model'
+import { Player } from './player.model';
 
 export enum RequestType {
   request = 'request',
@@ -13,26 +13,26 @@ export enum EventType {
 }
 
 export interface Game {
-  player: Player
-  grid: number[][],
-  rowValid: boolean[],
-  colValid: boolean[]
+  player: Player;
+  grid: number[][];
+  rowValid: boolean[];
+  colValid: boolean[];
 }
 
 export interface GameStart {
-  player: Player,
-  size: number,
-  event: EventType
+  player: Player;
+  size: number;
+  event: EventType;
 }
 
 export interface GameWin {
-  player: Player,
-  time: number
+  player: Player;
+  time: number;
 }
 
 export interface GameRequest {
-  from: Player,
-  to: Player,
-  type: RequestType
-  accepted: boolean
+  from: Player;
+  to: Player;
+  type: RequestType;
+  accepted: boolean;
 }
