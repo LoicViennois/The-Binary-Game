@@ -24,7 +24,7 @@ export class AuthService {
   }
 
   async login(username: string): Promise<void> {
-    const credentials = await this.afAuth.auth.signInAnonymously();
+    const credentials = await this.afAuth.signInAnonymously();
     this.player = createPlayer({
       uid: credentials.user.uid,
       name: username,
@@ -40,7 +40,7 @@ export class AuthService {
   }
 
   async logout(): Promise<void> {
-    await this.afAuth.auth.signOut();
+    await this.afAuth.signOut();
     this.player = null;
   }
 
