@@ -6,7 +6,7 @@ import { HomeComponent } from './views/home/home.component';
 import { GameComponent } from './views/game/game.component';
 import { AuthGuard } from './services/auth.guard';
 import { ModalContainerComponent } from './components/modals/modal-container/modal-container.component';
-import { CopyrightComponent } from './components/modals/copyright/copyright.component';
+import { AboutComponent } from './components/modals/about/about.component';
 
 
 const routes: Routes = [
@@ -15,9 +15,9 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'copyright',
+    path: 'about',
     component: ModalContainerComponent,
-    data: { component: CopyrightComponent },
+    data: { component: AboutComponent },
     outlet: 'modal'
   },
   {

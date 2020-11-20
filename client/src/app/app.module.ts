@@ -34,12 +34,12 @@ import { MultiplayerService } from './services/multiplayer.service';
 import { TimerService } from './services/timer.service';
 import { WebsocketService } from './services/websocket.service';
 import { ModalContainerComponent } from './components/modals/modal-container/modal-container.component';
-import { CopyrightComponent } from './components/modals/copyright/copyright.component';
+import { AboutComponent } from './components/modals/about/about.component';
 
 
 @NgModule({
   entryComponents: [
-    CopyrightComponent,
+    AboutComponent,
   ],
   declarations: [
     AppComponent,
@@ -57,7 +57,7 @@ import { CopyrightComponent } from './components/modals/copyright/copyright.comp
     ConfirmModalComponent,
     AlertModalComponent,
     ModalContainerComponent,
-    CopyrightComponent
+    AboutComponent
   ],
   imports: [
     BrowserModule,

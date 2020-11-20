@@ -17,12 +17,13 @@
   <div class="col-5 col-lg-3 d-flex justify-content-center align-items-center px-0 px-lg-3">
     <div *ngIf="onLoginPage">
       <a class="mx-2 text-color-dark"
-         href="https://github.com/LoicViennois/The-Binary-Game">
+         href="https://github.com/LoicViennois/The-Binary-Game"
+         target="_blank">
         <i class="title fa-lg fab fa-github"></i>
       </a>
-      <a [routerLink]="[{ outlets: { primary: [''], modal: ['copyright'] } }]"
+      <a [routerLink]="[{ outlets: { primary: [''], modal: ['about'] } }]"
          class="mx-2 text-color-dark">
-        <i class="title fa-lg fas fa-copyright"></i>
+        <i class="title fa-lg fas fa-info-circle"></i>
       </a>
     </div>
     <button (click)="logout()"

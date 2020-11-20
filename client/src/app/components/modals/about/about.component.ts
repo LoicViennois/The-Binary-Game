@@ -4,11 +4,11 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: 'bin-copyright',
-  templateUrl: './copyright.component.html',
-  styleUrls: ['./copyright.component.less']
+  selector: 'bin-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.less']
 })
-export class CopyrightComponent {
+export class AboutComponent {
   readonly version: string = environment.version;
 
   constructor(public activeModal: NgbActiveModal) {
