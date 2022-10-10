@@ -1,8 +1,8 @@
-import { version } from '../../package.json';
+import pkg from '../../package.json';
 
 export const environment = {
   production: true,
-  version,
+  version: pkg.version,
   firebaseConfig: {
     apiKey: 'AIzaSyAJL9tAW-3MpnbW3Cye_lNRMdqFQvjSxXA',
     authDomain: 'binary-b58e3.firebaseapp.com',

@@ -24,6 +24,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    return;
   }
 
   async logout(): Promise<void> {

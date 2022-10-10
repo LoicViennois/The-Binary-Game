@@ -2,10 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
@@ -38,50 +38,52 @@ import { AboutComponent } from './components/modals/about/about.component';
 
 
 @NgModule({
-  entryComponents: [
-    AboutComponent,
-  ],
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    HomeComponent,
-    LoginComponent,
-    ConnectedPlayersComponent,
-    ChatComponent,
-    HighScoresComponent,
-    MessageComponent,
-    BoxComponent,
-    GridComponent,
-    GridOpponentComponent,
-    GameComponent,
-    ConfirmModalComponent,
-    AlertModalComponent,
-    ModalContainerComponent,
-    AboutComponent
-  ],
-  imports: [
-    BrowserModule,
-    ReactiveFormsModule,
-    AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
-    AngularFirestoreModule,
-    AngularFireAuthModule,
-    NgbModalModule
-  ],
-  providers: [
-    AuthGuard,
-    AuthService,
-    GameService,
-    HighScoresService,
-    MessagesService,
-    MultiplayerService,
-    TimerService,
-    PlayersService,
-    WebsocketService,
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        HomeComponent,
+        LoginComponent,
+        ConnectedPlayersComponent,
+        ChatComponent,
+        HighScoresComponent,
+        MessageComponent,
+        BoxComponent,
+        GridComponent,
+        GridOpponentComponent,
+        GameComponent,
+        ConfirmModalComponent,
+        AlertModalComponent,
+        ModalContainerComponent,
+        AboutComponent
+    ],
+    imports: [
+        BrowserModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        NgbModalModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+          enabled: environment.production,
+          // Register the ServiceWorker as soon as the application is stable
+          // or after 30 seconds (whichever comes first).
+          registrationStrategy: 'registerWhenStable:30000'
+        })
+    ],
+    providers: [
+        AuthGuard,
+        AuthService,
+        GameService,
+        HighScoresService,
+        MessagesService,
+        MultiplayerService,
+        TimerService,
+        PlayersService,
+        WebsocketService,
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule {
 }

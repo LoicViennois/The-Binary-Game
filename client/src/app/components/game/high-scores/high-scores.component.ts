@@ -15,6 +15,7 @@ export class HighScoresComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+    return;
   }
 
   ngAfterViewInit(): void {

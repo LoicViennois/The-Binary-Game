@@ -24,6 +24,7 @@ export class MessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    return;
   }
 
 }

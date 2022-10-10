@@ -35,6 +35,7 @@ export class ConnectedPlayersComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    return;
   }
 
   playWith(player: Player): void {
