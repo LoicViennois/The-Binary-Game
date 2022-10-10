@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/LoicViennois/The-Binary-Game/compare/v1.2.0...v1.3.0) (2022-10-10)
+
+
+### Features
+
+* update to angular 13 ([a1e0f3f](https://github.com/LoicViennois/The-Binary-Game/commit/a1e0f3f73ea0804abfc5a651b658448651148e0c))
+
 ## [1.2.0](https://github.com/LoicViennois/The-Binary-Game/compare/v1.1.0...v1.2.0) (2020-11-20)
 
 
