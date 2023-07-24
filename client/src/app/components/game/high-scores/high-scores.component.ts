@@ -19,7 +19,7 @@ export class HighScoresComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.highScoresService.get(this.game);
+    this.highScoresService.setGame(this.game);
   }
 
 }

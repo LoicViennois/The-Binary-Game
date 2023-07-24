@@ -26,7 +26,7 @@ export class HighScoresService {
     );
   }
 
-  get(game: number): void {
+  setGame(game: number): void {
     this.gameFilter.next(game);
   }
 
