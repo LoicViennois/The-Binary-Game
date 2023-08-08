@@ -17,12 +17,7 @@ export class HighScoresService {
     this.highScoresStore = this.afStore.collection('high-scores');
     this.gameFilter = new Subject();
     this.highScores = this.gameFilter.pipe(
-      switchMap(game => {
-          return this.afStore.collection<HighScore>('high-scores', (ref) => {
-            return ref.orderBy('time', 'asc').where('game', '==', game).limit(10);
-          }).valueChanges();
-        }
-      )
+      switchMap((game) => this.getHighScores(game))
     );
   }
 
@@ -37,6 +32,15 @@ export class HighScoresService {
       time
     };
     await this.highScoresStore.add(score);
+  }
+
+  private getHighScores(game: number): Observable<HighScore[]> {
+    return this.afStore.collection<HighScore>('high-scores', (ref) => {
+      return ref
+        .orderBy('time', 'asc')
+        .where('game', '==', game)
+        .limit(10);
+    }).valueChanges();
   }
 
 }
