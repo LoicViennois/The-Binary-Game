@@ -8,7 +8,7 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let score of highScoresService.highScores | async ; let i = index">
+  <tr *ngFor="let score of highScoresService.bestHighScores | async ; let i = index">
     <th class="text-right" scope="row">{{ i + 1 }}</th>
     <td class="text-center">{{ score.time | date:'mm:ss:SS' }}</td>
     <td class="text-left">{{ score.user.name }}</td>
