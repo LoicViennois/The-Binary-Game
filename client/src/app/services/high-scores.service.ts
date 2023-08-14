@@ -39,7 +39,7 @@ export class HighScoresService {
         return ref
           .orderBy('time', 'asc')
           .where('game', '==', game);
-      }).valueChanges().pipe(
+      }).valueChanges({ idField: 'id' }).pipe(
         map(highScores => this.getBestForEachUser(highScores))
       );
   }
@@ -51,6 +51,8 @@ export class HighScoresService {
       const userName = highScore.user.name.toLowerCase();
       if (!bestHighScoresMap.has(userName)) {
         bestHighScoresMap.set(userName, highScore);
+      } else {
+        this.highScoresStore.doc(highScore.id).delete().then();
       }
     }
 
