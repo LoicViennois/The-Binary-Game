@@ -46,12 +46,10 @@ export class HighScoresService {
 
   private getBestForEachUser(highScores: HighScore[]): HighScore[] {
     const bestHighScoresMap = new Map<string, HighScore>();
-    console.log(highScores.length)
 
     for (const highScore of highScores) {
       const userName = highScore.user.name.toLowerCase();
-      const existingScore = bestHighScoresMap.get(userName);
-      if (!existingScore || highScore.time < existingScore.time) {
+      if (!bestHighScoresMap.has(userName)) {
         bestHighScoresMap.set(userName, highScore);
       }
     }
