@@ -3,17 +3,19 @@ FROM node:lts-alpine as base
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+RUN corepack enable && corepack prepare pnpm@latest --activate
 
-RUN npm ci
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml* ./
+
+RUN pnpm install --frozen-lockfile
 
 COPY . .
 
 # Build
 FROM base as build
 
-RUN npm run lint && \
-    npm run build:prod
+RUN pnpm run lint && \
+    pnpm run build:prod
 
 # Prod
 FROM nginx:stable as prod

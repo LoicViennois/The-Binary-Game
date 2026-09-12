@@ -5,10 +5,11 @@
   "license": "GPLv3",
   "author": "Loïc Viennois",
   "scripts": {
-    "start:client": "npm --prefix client run start",
+    "start:client": "pnpm --dir client run start",
     "start": "run-p start:client",
     "release": "standard-version"
   },
+  "packageManager": "pnpm@12.3.4",
   "private": true,
   "devDependencies": {
     "npm-run-all": "^4.1.5",
