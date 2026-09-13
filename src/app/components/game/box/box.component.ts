@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'bin-box',
-  templateUrl: './box.component.html',
-  styleUrls: ['./box.component.less']
+    selector: 'bin-box',
+    templateUrl: './box.component.html',
+    styleUrls: ['./box.component.less'],
+    imports: [NgIf]
 })
 export class BoxComponent implements OnInit {
   @Input() value: number;

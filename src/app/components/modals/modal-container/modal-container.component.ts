@@ -4,9 +4,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'bin-modal-container',
-  template: '',
-  styleUrls: ['./modal-container.component.less']
+    selector: 'bin-modal-container',
+    template: '',
+    styleUrls: ['./modal-container.component.less']
 })
 export class ModalContainerComponent {
   currentDialog = null;

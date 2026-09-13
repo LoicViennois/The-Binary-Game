@@ -38,8 +38,23 @@ import { AboutComponent } from './components/modals/about/about.component';
 
 
 @NgModule({
-    declarations: [
+    declarations: [],
+    imports: [
+        BrowserModule,
         AppComponent,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        NgbModalModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
         HeaderComponent,
         HomeComponent,
         LoginComponent,
@@ -55,22 +70,6 @@ import { AboutComponent } from './components/modals/about/about.component';
         AlertModalComponent,
         ModalContainerComponent,
         AboutComponent
-    ],
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireDatabaseModule,
-        AngularFirestoreModule,
-        AngularFireAuthModule,
-        NgbModalModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-          enabled: environment.production,
-          // Register the ServiceWorker as soon as the application is stable
-          // or after 30 seconds (whichever comes first).
-          registrationStrategy: 'registerWhenStable:30000'
-        })
     ],
     providers: [
         AuthGuard,

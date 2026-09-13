@@ -10,12 +10,16 @@ import { AuthService } from '../../services/auth.service';
 import { GameRequest, RequestType } from '../../models/game.model';
 import { Player } from '../../models/player.model';
 import { DbService } from '../../services/db.service';
+import { NgIf, NgFor } from '@angular/common';
+import { ConnectedPlayersComponent } from '../../components/connected-players/connected-players.component';
+import { ChatComponent } from '../../components/chat/chat.component';
 
 
 @Component({
-  selector: 'bin-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.less', '../../shared/panels.less']
+    selector: 'bin-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.less', '../../shared/panels.less'],
+    imports: [NgIf, ConnectedPlayersComponent, NgFor, ChatComponent, ConfirmModalComponent, AlertModalComponent]
 })
 export class HomeComponent extends UnsubscribeDirective implements OnInit {
   expandedLeft = false;

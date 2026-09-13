@@ -1,15 +1,18 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { MessagesService } from '../../services/messages.service';
 import { AuthService } from '../../services/auth.service';
 import { DbService } from '../../services/db.service';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { MessageComponent } from '../message/message.component';
 
 
 @Component({
-  selector: 'bin-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.less']
+    selector: 'bin-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.less'],
+    imports: [NgIf, NgFor, MessageComponent, ReactiveFormsModule, AsyncPipe]
 })
 export class ChatComponent implements OnInit {
   form: UntypedFormGroup;

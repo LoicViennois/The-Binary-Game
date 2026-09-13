@@ -5,12 +5,14 @@ import { PlayersService } from '../../services/players.service';
 import { MultiplayerService } from '../../services/multiplayer.service';
 import { AuthService } from '../../services/auth.service';
 import { DbService } from '../../services/db.service';
+import { NgIf, NgFor, AsyncPipe } from '@angular/common';
 
 
 @Component({
-  selector: 'bin-connected-players',
-  templateUrl: './connected-players.component.html',
-  styleUrls: ['./connected-players.component.less']
+    selector: 'bin-connected-players',
+    templateUrl: './connected-players.component.html',
+    styleUrls: ['./connected-players.component.less'],
+    imports: [NgIf, NgFor, AsyncPipe]
 })
 export class ConnectedPlayersComponent implements OnInit {
 

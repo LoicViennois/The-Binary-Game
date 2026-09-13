@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { NgIf, SlicePipe } from '@angular/common';
 
 
 @Component({
-  selector: 'bin-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less']
+    selector: 'bin-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.less'],
+    imports: [NgIf, RouterLink, SlicePipe]
 })
 export class HeaderComponent implements OnInit {
 

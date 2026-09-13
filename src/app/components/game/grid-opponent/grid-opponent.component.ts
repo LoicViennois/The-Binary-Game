@@ -9,14 +9,17 @@ import { GameService } from '../../../services/game.service';
 import { MultiplayerService } from '../../../services/multiplayer.service';
 import { Game } from '../../../models/game.model';
 import { fill, zeros } from '../../../shared/utils';
+import { NgIf, NgFor } from '@angular/common';
 
 
 @Component({
-  selector: 'bin-grid-opponent',
-  templateUrl: './grid-opponent.component.html',
-  styleUrls: [
-    './grid-opponent.component.less',
-    '../grid/grid.component.less']
+    selector: 'bin-grid-opponent',
+    templateUrl: './grid-opponent.component.html',
+    styleUrls: [
+        './grid-opponent.component.less',
+        '../grid/grid.component.less'
+    ],
+    imports: [NgIf, NgFor, BoxComponent]
 })
 export class GridOpponentComponent extends UnsubscribeDirective implements OnInit {
   range: number[] = [];
