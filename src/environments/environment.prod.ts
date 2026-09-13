@@ -1,4 +1,7 @@
+import { gitInfo } from './git-info';
+
 export const environment = {
   production: true,
-  gitSha: ''
+  commitSha: gitInfo.commitSha,
+  shortSha: gitInfo.shortSha,
 };

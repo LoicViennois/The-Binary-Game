@@ -6,8 +6,12 @@
   "main": "main.js",
   "scripts": {
     "ng": "ng",
+    "prebuild": "node scripts/generate-git-info.mjs",
+    "prebuild:prod": "node scripts/generate-git-info.mjs",
+    "build:prod": "ng build --configuration production",
+    "prestart": "node scripts/generate-git-info.mjs",
     "start": "ng serve",
-    "build:prod": "node scripts/set-git-sha.js && ng build --configuration production",
+    "prelint": "node scripts/generate-git-info.mjs",
     "lint": "ng lint"
   },
   "packageManager": "pnpm@12.3.4",

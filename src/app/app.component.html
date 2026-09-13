@@ -7,9 +7,11 @@
   </div>
 </main>
 <router-outlet name="modal"></router-outlet>
-<div class="build-version">
-  Build <a [href]="commitUrl"
-           aria-label="commit"
-           rel="noopener noreferrer"
-           target="_blank">{{ shortGitSha }}</a>
+<div class="build-info">
+  Build
+  <a aria-label="commit"
+     [title]="commitSha"
+     [href]="commitUrl"
+     target="_blank"
+     rel="noopener">{{ shortSha }}</a>
 </div>

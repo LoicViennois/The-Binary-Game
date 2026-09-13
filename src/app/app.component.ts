@@ -10,11 +10,9 @@ import { environment } from '../environments/environment';
   imports: [HeaderComponent, RouterOutlet]
 })
 export class AppComponent {
-  readonly gitSha = environment.gitSha;
-  readonly shortGitSha = environment.gitSha && environment.gitSha !== 'dev'
-    ? environment.gitSha.slice(0, 7)
-    : (environment.gitSha || 'dev');
-  readonly commitUrl = environment.gitSha && environment.gitSha !== 'dev'
-    ? `https://github.com/LoicViennois/The-Binary-Game/commit/${environment.gitSha}`
+  readonly shortSha = environment.shortSha;
+  readonly commitSha = environment.commitSha;
+  readonly commitUrl = this.commitSha && this.commitSha !== 'dev'
+    ? `https://github.com/LoicViennois/The-Binary-Game/commit/${this.commitSha}`
     : 'https://github.com/LoicViennois/The-Binary-Game';
 }
