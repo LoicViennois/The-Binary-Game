@@ -39,8 +39,11 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
+    if (this.form.invalid) {
+      return;
+    }
     await this.authService.login(this.form.value.username);
-    this.router.navigate(['/home']).then();
+    await this.router.navigate(['/home']);
   }
 
 }

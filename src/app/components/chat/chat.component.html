@@ -2,12 +2,12 @@
   <div class="d-flex flex-column h-100">
     <h3>Chat</h3>
     <div class="d-flex flex-grow-1 flex-column-reverse overflow-auto px-1">
-      @for (msg of messagesService.messages | async; track msg) {
+      @for (msg of messagesService.messages | async; track msg.timestamp) {
         <bin-message [message]="msg"></bin-message>
       }
     </div>
     <div class="px-1 margin-left">
-      <form (submit)="onSubmit()" [formGroup]="form">
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
         <div class="form-group m-0">
           <div class="input-group">
             <input #message

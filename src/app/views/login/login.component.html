@@ -10,8 +10,8 @@
     </div>
   </div>
 }
-<div (submit)="onSubmit()" class="row justify-content-center mt-3">
-  <form [formGroup]="form">
+<div class="row justify-content-center mt-3">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="username">Username</label>
       <input [class.is-invalid]="form.touched && !form.valid"
@@ -19,12 +19,12 @@
         formControlName="username"
         id="username"
         type="text">
-      </div>
-      <button [disabled]="!form.valid"
-        class="btn btn-dark"
-        type="submit">
-        <i class="fas fa-play pr-1"></i>
-        Play
-      </button>
-    </form>
-  </div>
+    </div>
+    <button [disabled]="!form.valid"
+      class="btn btn-dark"
+      type="submit">
+      <i class="fas fa-play pr-1"></i>
+      Play
+    </button>
+  </form>
+</div>

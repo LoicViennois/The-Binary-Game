@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -81,8 +81,10 @@ import { AboutComponent } from './components/modals/about/about.component';
         TimerService,
         PlayersService,
         WebsocketService,
-    ],
-    bootstrap: [AppComponent]
+    ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    appRef.bootstrap(AppComponent);
+  }
 }

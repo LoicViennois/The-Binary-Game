@@ -1,7 +1,7 @@
 @if (connected) {
   <div>
     <h3>Connected players</h3>
-    @for (user of playersService.players | async; track user) {
+    @for (user of playersService.players | async; track user.uid) {
       <div
         class="row justify-content-center">
         <button (click)="playWith(user)"
