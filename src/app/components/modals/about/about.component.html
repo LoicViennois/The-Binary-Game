@@ -6,11 +6,11 @@
 </div>
 <div class="modal-body text-left text-size-normal">
   <p>
-    <strong>The Binary Game
-      <a aria-label="changelog"
-         href="https://github.com/LoicViennois/The-Binary-Game/blob/master/CHANGELOG.md"
-         target="_blank">v{{ version }}</a>
-    </strong><br>
+    <strong>The Binary Game</strong><br>
+    Build <a [href]="commitUrl"
+             aria-label="commit"
+             rel="noopener noreferrer"
+             target="_blank">{{ shortGitSha }}</a><br>
     Copyright &copy; 2020 by <a href="https://github.com/LoicViennois" target="_blank">Loïc Viennois</a>
   </p>
   <p>
