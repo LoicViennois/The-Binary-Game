@@ -27,7 +27,6 @@ export class GameComponent implements OnInit {
   stopped = false;
   success = false;
   winTime: number;
-  expandedLeft = false;
   expandedRight = false;
 
   @ViewChild(GridComponent, { static: true }) grid: GridComponent;
