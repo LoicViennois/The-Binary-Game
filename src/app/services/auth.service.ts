@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { interval } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
@@ -9,13 +9,15 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/comp
 
 @Injectable()
 export class AuthService {
+  private afAuth = inject(AngularFireAuth);
+  private afStore = inject(AngularFirestore);
+
   player: Player = null;
   checkinInterval = 3000;
   timeoutInterval = 3 * this.checkinInterval;
   private playersStore: AngularFirestoreCollection<Player>;
 
-  constructor(private afAuth: AngularFireAuth,
-              private afStore: AngularFirestore) {
+  constructor() {
     this.playersStore = this.afStore.collection('players');
   }
 

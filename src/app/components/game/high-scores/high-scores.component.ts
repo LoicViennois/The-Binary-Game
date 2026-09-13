@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, inject } from '@angular/core';
 
 import { HighScoresService } from '../../../services/high-scores.service';
 import { NgFor, AsyncPipe, DatePipe } from '@angular/common';
@@ -11,10 +11,9 @@ import { NgFor, AsyncPipe, DatePipe } from '@angular/common';
     imports: [NgFor, AsyncPipe, DatePipe]
 })
 export class HighScoresComponent implements OnInit, AfterViewInit {
-  @Input() game: number;
+  highScoresService = inject(HighScoresService);
 
-  constructor(public highScoresService: HighScoresService) {
-  }
+  @Input() game: number;
 
   ngOnInit(): void {
     return;

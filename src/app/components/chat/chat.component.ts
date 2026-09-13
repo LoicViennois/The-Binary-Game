@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { MessagesService } from '../../services/messages.service';
@@ -15,15 +15,14 @@ import { MessageComponent } from '../message/message.component';
     imports: [NgIf, NgFor, MessageComponent, ReactiveFormsModule, AsyncPipe]
 })
 export class ChatComponent implements OnInit {
+  messagesService = inject(MessagesService);
+  private authService = inject(AuthService);
+  private fb = inject(UntypedFormBuilder);
+  private dbService = inject(DbService);
+
   form: UntypedFormGroup;
 
   @ViewChild('message', { static: false }) inputField: ElementRef;
-
-  constructor(public messagesService: MessagesService,
-              private authService: AuthService,
-              private fb: UntypedFormBuilder,
-              private dbService: DbService) {
-  }
 
   get connected(): boolean {
     return this.dbService.connected;

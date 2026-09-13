@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
@@ -22,18 +22,16 @@ import { ChatComponent } from '../../components/chat/chat.component';
     imports: [NgIf, ConnectedPlayersComponent, NgFor, ChatComponent, ConfirmModalComponent, AlertModalComponent]
 })
 export class HomeComponent extends UnsubscribeDirective implements OnInit {
+  private multiplayerService = inject(MultiplayerService);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private dbService = inject(DbService);
+
   expandedLeft = false;
   expandedRight = false;
 
   @ViewChild(ConfirmModalComponent, { static: true }) confirmModal: ConfirmModalComponent;
   @ViewChild(AlertModalComponent, { static: true }) alertModal: AlertModalComponent;
-
-  constructor(private multiplayerService: MultiplayerService,
-              private authService: AuthService,
-              private router: Router,
-              private dbService: DbService) {
-    super();
-  }
 
   get connected(): boolean {
     return this.dbService.connected;

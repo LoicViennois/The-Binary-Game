@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
@@ -12,10 +12,9 @@ import { NgIf, SlicePipe } from '@angular/common';
     imports: [NgIf, RouterLink, SlicePipe]
 })
 export class HeaderComponent implements OnInit {
+  authService = inject(AuthService);
+  private router = inject(Router);
 
-  constructor(public authService: AuthService,
-              private router: Router) {
-  }
 
   get onLoginPage(): boolean {
     return this.router.url.startsWith('/login');

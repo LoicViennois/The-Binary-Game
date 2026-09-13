@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable, Subject } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
@@ -9,11 +9,13 @@ import { getUser, Player } from '../models/player.model';
 
 @Injectable()
 export class HighScoresService {
+  private afStore = inject(AngularFirestore);
+
   bestHighScores: Observable<HighScore[]>;
   private gameFilter: Subject<number>;
   private highScoresStore: AngularFirestoreCollection<HighScore>;
 
-  constructor(private afStore: AngularFirestore) {
+  constructor() {
     this.highScoresStore = this.afStore.collection('high-scores');
     this.gameFilter = new Subject();
     this.bestHighScores =  this.gameFilter.pipe(

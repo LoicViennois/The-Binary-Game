@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, QueryList, ViewChildren } from '@angular/core';
+import { Component, Input, OnInit, QueryList, ViewChildren, inject } from '@angular/core';
 import { range, times } from 'lodash';
 import { filter, takeUntil } from 'rxjs/operators';
 
@@ -22,6 +22,9 @@ import { NgIf, NgFor } from '@angular/common';
     imports: [NgIf, NgFor, BoxComponent]
 })
 export class GridOpponentComponent extends UnsubscribeDirective implements OnInit {
+  private gameService = inject(GameService);
+  private multiplayerService = inject(MultiplayerService);
+
   range: number[] = [];
   grid: number[][] = [];
   rowValid: boolean[];
@@ -32,11 +35,6 @@ export class GridOpponentComponent extends UnsubscribeDirective implements OnIni
   @Input() player: Player;
   @Input() size: number;
   @ViewChildren(BoxComponent) boxes: QueryList<BoxComponent>;
-
-  constructor(private gameService: GameService,
-              private multiplayerService: MultiplayerService) {
-    super();
-  }
 
   ngOnInit(): void {
     this.range = range(this.size);

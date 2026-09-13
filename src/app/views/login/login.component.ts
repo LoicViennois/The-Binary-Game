@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 
@@ -13,12 +13,11 @@ import { NgIf } from '@angular/common';
     imports: [NgIf, RouterLink, ReactiveFormsModule]
 })
 export class LoginComponent implements OnInit {
-  form: UntypedFormGroup;
+  private authService = inject(AuthService);
+  private fb = inject(UntypedFormBuilder);
+  private router = inject(Router);
 
-  constructor(private authService: AuthService,
-              private fb: UntypedFormBuilder,
-              private router: Router) {
-  }
+  form: UntypedFormGroup;
 
   get loggedIn(): boolean {
     return this.authService.loggedIn();

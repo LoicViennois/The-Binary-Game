@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, inject } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,13 +7,12 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
     styleUrls: ['./alert-modal.component.css']
 })
 export class AlertModalComponent {
+  private modalService = inject(NgbModal);
+
   title: string;
   message: string;
 
   @ViewChild('modal', { static: true }) modal;
-
-  constructor(private modalService: NgbModal) {
-  }
 
   open(title: string, message: string): Promise<any> {
     this.title = title;

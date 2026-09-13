@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren, inject } from '@angular/core';
 import { isEqual, range, times, zipWith } from 'lodash';
 import { takeUntil } from 'rxjs/operators';
 import { UnsubscribeDirective } from '../../../shared/unsubscribe.directive';
@@ -17,6 +17,10 @@ import { NgFor, NgIf } from '@angular/common';
     imports: [NgFor, BoxComponent, NgIf]
 })
 export class GridComponent extends UnsubscribeDirective implements OnInit {
+  private gameService = inject(GameService);
+  private multiplayerService = inject(MultiplayerService);
+  private authService = inject(AuthService);
+
   range: number[] = [];
   rowTot: number[] = [];
   colTot: number[] = [];
@@ -31,12 +35,6 @@ export class GridComponent extends UnsubscribeDirective implements OnInit {
   @Output() completed = new EventEmitter<boolean>();
 
   private grid: number[][];
-
-  constructor(private gameService: GameService,
-              private multiplayerService: MultiplayerService,
-              private authService: AuthService) {
-    super();
-  }
 
   ngOnInit(): void {
     this.range = range(this.size);
