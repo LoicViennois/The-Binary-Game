@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 
@@ -11,6 +11,10 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class MultiplayerService {
+  private webSocket = inject(WebsocketService);
+  private playersService = inject(PlayersService);
+  private authService = inject(AuthService);
+
   opponent: Player;
 
   private gameStart: Subject<GameStart>;
@@ -19,9 +23,7 @@ export class MultiplayerService {
   private playerTime: number = null;
   private opponentTime: number = null;
 
-  constructor(private webSocket: WebsocketService,
-              private playersService: PlayersService,
-              private authService: AuthService) {
+  constructor() {
     // TODO: replace webSocket by firestore
     this.opponent = null;
     this.gameStart = this.webSocket.connect('game-start');

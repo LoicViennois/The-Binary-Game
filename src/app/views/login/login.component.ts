@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
 
 
+
 @Component({
-  selector: 'bin-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'bin-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    imports: [RouterLink, ReactiveFormsModule]
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  private authService = inject(AuthService);
+  private fb = inject(UntypedFormBuilder);
+  private router = inject(Router);
 
-  constructor(private authService: AuthService,
-              private fb: FormBuilder,
-              private router: Router) {
-  }
+  form: UntypedFormGroup;
 
   get loggedIn(): boolean {
     return this.authService.loggedIn();
@@ -38,8 +39,11 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmit(): Promise<void> {
+    if (this.form.invalid) {
+      return;
+    }
     await this.authService.login(this.form.value.username);
-    this.router.navigate(['/home']).then();
+    await this.router.navigate(['/home']);
   }
 
 }

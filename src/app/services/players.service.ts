@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -10,11 +10,13 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class PlayersService {
+  private afStore = inject(AngularFirestore);
+  private authService = inject(AuthService);
+
   players: Observable<Player[]>;
   private playersStore: AngularFirestoreCollection<Player>;
 
-  constructor(private afStore: AngularFirestore,
-              private authService: AuthService) {
+  constructor() {
     this.playersStore = this.afStore.collection('players', (ref) => {
       return ref.where('lastCheckin', '>', Date.now() - this.authService.timeoutInterval);
     });

@@ -1,26 +1,28 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild, inject } from '@angular/core';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { MessagesService } from '../../services/messages.service';
 import { AuthService } from '../../services/auth.service';
 import { DbService } from '../../services/db.service';
+import { AsyncPipe } from '@angular/common';
+import { MessageComponent } from '../message/message.component';
 
 
 @Component({
-  selector: 'bin-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.less']
+    selector: 'bin-chat',
+    templateUrl: './chat.component.html',
+    styleUrls: ['./chat.component.less'],
+    imports: [MessageComponent, ReactiveFormsModule, AsyncPipe]
 })
 export class ChatComponent implements OnInit {
-  form: FormGroup;
+  messagesService = inject(MessagesService);
+  private authService = inject(AuthService);
+  private fb = inject(UntypedFormBuilder);
+  private dbService = inject(DbService);
+
+  form: UntypedFormGroup;
 
   @ViewChild('message', { static: false }) inputField: ElementRef;
-
-  constructor(public messagesService: MessagesService,
-              private authService: AuthService,
-              private fb: FormBuilder,
-              private dbService: DbService) {
-  }
 
   get connected(): boolean {
     return this.dbService.connected;

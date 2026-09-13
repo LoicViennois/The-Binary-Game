@@ -1,9 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+
 @Component({
-  selector: 'bin-box',
-  templateUrl: './box.component.html',
-  styleUrls: ['./box.component.less']
+    selector: 'bin-box',
+    templateUrl: './box.component.html',
+    styleUrls: ['./box.component.less'],
+    imports: []
 })
 export class BoxComponent implements OnInit {
   @Input() value: number;

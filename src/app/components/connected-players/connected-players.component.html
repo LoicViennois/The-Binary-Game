@@ -1,16 +1,26 @@
-<div *ngIf="connected">
-  <h3>Connected players</h3>
-  <div *ngFor="let user of playersService.players | async"
-       class="row justify-content-center">
-    <button (click)="playWith(user)"
-            [class.btn-light]="!isOpponent(user)"
-            [class.btn-success]="isOpponent(user)"
-            [disabled]="user.playing || inParty(user) || isYou(user)"
-            class="btn mt-2">
-      {{ user.name }}
-      <span *ngIf="user.playing && !inParty(user)">(In game)</span>
-      <span *ngIf="inParty(user)">(In party)</span>
-      <span *ngIf="isYou(user)">(You)</span>
-    </button>
+@if (connected) {
+  <div>
+    <h3>Connected players</h3>
+    @for (user of playersService.players | async; track user.uid) {
+      <div
+        class="row justify-content-center">
+        <button (click)="playWith(user)"
+          [class.btn-light]="!isOpponent(user)"
+          [class.btn-success]="isOpponent(user)"
+          [disabled]="user.playing || inParty(user) || isYou(user)"
+          class="btn mt-2">
+          {{ user.name }}
+          @if (user.playing && !inParty(user)) {
+            <span>(In game)</span>
+          }
+          @if (inParty(user)) {
+            <span>(In party)</span>
+          }
+          @if (isYou(user)) {
+            <span>(You)</span>
+          }
+        </button>
+      </div>
+    }
   </div>
-</div>
+}

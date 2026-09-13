@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
 
@@ -8,10 +8,12 @@ import { getUser, Player } from '../models/player.model';
 
 @Injectable()
 export class MessagesService {
+  private afStore = inject(AngularFirestore);
+
   messages: Observable<Message[]>;
   private messageStore: AngularFirestoreCollection<Message>;
 
-  constructor(private afStore: AngularFirestore) {
+  constructor() {
     this.messageStore = this.afStore.collection('messages', (ref) => {
       return ref.orderBy('timestamp', 'desc').limit(100);
     });

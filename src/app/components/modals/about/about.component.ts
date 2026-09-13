@@ -1,18 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../../../../environments/environment';
 
 @Component({
-  selector: 'bin-about',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.less']
+    selector: 'bin-about',
+    templateUrl: './about.component.html',
+    styleUrls: ['./about.component.less']
 })
 export class AboutComponent {
-  readonly version: string = environment.version;
+  activeModal = inject(NgbActiveModal);
 
-  constructor(public activeModal: NgbActiveModal) {
-  }
+  readonly version: string = environment.version;
 
 }
 

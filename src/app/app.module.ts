@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -38,8 +38,23 @@ import { AboutComponent } from './components/modals/about/about.component';
 
 
 @NgModule({
-    declarations: [
+    declarations: [],
+    imports: [
+        BrowserModule,
         AppComponent,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        AngularFireModule.initializeApp(environment.firebaseConfig),
+        AngularFireDatabaseModule,
+        AngularFirestoreModule,
+        AngularFireAuthModule,
+        NgbModalModule,
+        ServiceWorkerModule.register('ngsw-worker.js', {
+            enabled: environment.production,
+            // Register the ServiceWorker as soon as the application is stable
+            // or after 30 seconds (whichever comes first).
+            registrationStrategy: 'registerWhenStable:30000'
+        }),
         HeaderComponent,
         HomeComponent,
         LoginComponent,
@@ -56,22 +71,6 @@ import { AboutComponent } from './components/modals/about/about.component';
         ModalContainerComponent,
         AboutComponent
     ],
-    imports: [
-        BrowserModule,
-        ReactiveFormsModule,
-        AppRoutingModule,
-        AngularFireModule.initializeApp(environment.firebaseConfig),
-        AngularFireDatabaseModule,
-        AngularFirestoreModule,
-        AngularFireAuthModule,
-        NgbModalModule,
-        ServiceWorkerModule.register('ngsw-worker.js', {
-          enabled: environment.production,
-          // Register the ServiceWorker as soon as the application is stable
-          // or after 30 seconds (whichever comes first).
-          registrationStrategy: 'registerWhenStable:30000'
-        })
-    ],
     providers: [
         AuthGuard,
         AuthService,
@@ -82,8 +81,10 @@ import { AboutComponent } from './components/modals/about/about.component';
         TimerService,
         PlayersService,
         WebsocketService,
-    ],
-    bootstrap: [AppComponent]
+    ]
 })
-export class AppModule {
+export class AppModule implements DoBootstrap {
+  ngDoBootstrap(appRef: ApplicationRef): void {
+    appRef.bootstrap(AppComponent);
+  }
 }

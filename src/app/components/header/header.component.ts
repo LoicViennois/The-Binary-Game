@@ -1,19 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
+import { SlicePipe } from '@angular/common';
 
 
 @Component({
-  selector: 'bin-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.less']
+    selector: 'bin-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.less'],
+    imports: [RouterLink, SlicePipe]
 })
 export class HeaderComponent implements OnInit {
+  authService = inject(AuthService);
+  private router = inject(Router);
 
-  constructor(public authService: AuthService,
-              private router: Router) {
-  }
 
   get onLoginPage(): boolean {
     return this.router.url.startsWith('/login');

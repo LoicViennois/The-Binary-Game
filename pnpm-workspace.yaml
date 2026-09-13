@@ -1,9 +1,12 @@
 allowBuilds:
   '@angular/cli': true
+  '@firebase/util': true
   '@fortawesome/fontawesome-free': true
   '@parcel/watcher': true
   core-js: true
   core-js-pure: true
   esbuild: true
+  lmdb: true
+  msgpackr-extract: true
   nx: true
   protobufjs: true

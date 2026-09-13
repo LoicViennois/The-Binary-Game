@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { takeUntil } from 'rxjs/operators';
 
@@ -11,14 +11,25 @@ import { AuthService } from '../../services/auth.service';
 import { PlayersService } from '../../services/players.service';
 import { MultiplayerService } from '../../services/multiplayer.service';
 import { Player } from '../../models/player.model';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { HighScoresComponent } from '../../components/game/high-scores/high-scores.component';
 
 
 @Component({
-  selector: 'bin-game',
-  templateUrl: './game.component.html',
-  styleUrls: ['./game.component.less', '../../shared/panels.less']
+    selector: 'bin-game',
+    templateUrl: './game.component.html',
+    styleUrls: ['./game.component.less', '../../shared/panels.less'],
+    imports: [GridOpponentComponent, GridComponent, HighScoresComponent, AsyncPipe, DatePipe]
 })
 export class GameComponent extends UnsubscribeDirective implements OnInit, OnDestroy {
+  timerService = inject(TimerService);
+  private route = inject(ActivatedRoute);
+  private highScoresService = inject(HighScoresService);
+  private authService = inject(AuthService);
+  private playersService = inject(PlayersService);
+  private multiplayerService = inject(MultiplayerService);
+  private router = inject(Router);
+
   size: number;
   stopped = false;
   success = false;
@@ -29,16 +40,6 @@ export class GameComponent extends UnsubscribeDirective implements OnInit, OnDes
 
   @ViewChild(GridComponent, { static: true }) grid: GridComponent;
   @ViewChild(GridOpponentComponent, { static: true }) gridOpponent: GridOpponentComponent;
-
-  constructor(public timerService: TimerService,
-              private route: ActivatedRoute,
-              private highScoresService: HighScoresService,
-              private authService: AuthService,
-              private playersService: PlayersService,
-              private multiplayerService: MultiplayerService,
-              private router: Router) {
-    super();
-  }
 
   get opponent(): Player {
     return this.multiplayerService.opponent;

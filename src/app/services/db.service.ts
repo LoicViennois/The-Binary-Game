@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbService {
+  private afDb = inject(AngularFireDatabase);
+
   connected: boolean;
 
-  constructor(private afDb: AngularFireDatabase) {
+  constructor() {
     this.afDb.object<boolean>('.info/connected').valueChanges().subscribe((connected: boolean) => {
       this.connected = connected;
     });

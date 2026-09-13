@@ -1,18 +1,19 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, inject } from '@angular/core';
 
 import { HighScoresService } from '../../../services/high-scores.service';
+import { AsyncPipe, DatePipe } from '@angular/common';
 
 
 @Component({
-  selector: 'bin-high-scores',
-  templateUrl: './high-scores.component.html',
-  styleUrls: ['./high-scores.component.css']
+    selector: 'bin-high-scores',
+    templateUrl: './high-scores.component.html',
+    styleUrls: ['./high-scores.component.css'],
+    imports: [AsyncPipe, DatePipe]
 })
 export class HighScoresComponent implements OnInit, AfterViewInit {
-  @Input() game: number;
+  highScoresService = inject(HighScoresService);
 
-  constructor(public highScoresService: HighScoresService) {
-  }
+  @Input() game: number;
 
   ngOnInit(): void {
     return;
