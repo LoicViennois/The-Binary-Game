@@ -1,17 +1,10 @@
 import { User } from './user.model';
 
-export interface Player extends User {
-  playing: boolean;
-  inParty: boolean;
-  lastCheckin: number;
-}
+export interface Player extends User {}
 
 export function createPlayer(user: User): Player {
   return {
-    ...user,
-    inParty: false,
-    playing: false,
-    lastCheckin: Date.now()
+    ...user
   };
 }
 

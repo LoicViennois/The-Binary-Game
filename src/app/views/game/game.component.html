@@ -11,13 +11,6 @@
         <span class="timer py-2">{{ winTime | date:'mm:ss:SS' }}</span>
       }
     </h2>
-    <div class="row justify-content-center pt-2">
-      @if (opponent) {
-        <div class="ml-3">
-          <bin-grid-opponent [player]="opponent" [size]="size"></bin-grid-opponent>
-        </div>
-      }
-    </div>
   </div>
   <div (click)="expandedLeft=!expandedLeft"
     [class.expanded]="expandedLeft"
@@ -40,7 +33,7 @@
       <bin-grid (completed)="onCompleted($event)" [size]="size" [stopped]="stopped"></bin-grid>
     </div>
     <div class="pt-2">
-      @if (!opponent && !stopped) {
+      @if (!stopped) {
         <button (click)="stopGame()" class="btn btn-danger mx-2">
           <i class="fas fa-ban"></i>
           Stop

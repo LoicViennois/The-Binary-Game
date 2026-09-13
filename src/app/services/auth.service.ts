@@ -1,24 +1,15 @@
-import { Injectable, inject } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { interval } from 'rxjs';
-import { takeWhile } from 'rxjs/operators';
+import { Injectable } from '@angular/core';
 
 import { createPlayer, Player } from '../models/player.model';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 
+const STORAGE_KEY = 'tb_user';
 
 @Injectable()
 export class AuthService {
-  private afAuth = inject(AngularFireAuth);
-  private afStore = inject(AngularFirestore);
-
-  player: Player = null;
-  checkinInterval = 3000;
-  timeoutInterval = 3 * this.checkinInterval;
-  private playersStore: AngularFirestoreCollection<Player>;
+  player: Player | null = null;
 
   constructor() {
-    this.playersStore = this.afStore.collection('players');
+    this.loadPlayer();
   }
 
   loggedIn(): boolean {
@@ -26,24 +17,38 @@ export class AuthService {
   }
 
   async login(username: string): Promise<void> {
-    const credentials = await this.afAuth.signInAnonymously();
+    const trimmed = username.trim();
     this.player = createPlayer({
-      uid: credentials.user.uid,
-      name: username,
+      uid: trimmed.toLowerCase(),
+      name: trimmed,
     });
-    await this.playersStore.doc(this.player.uid).set(this.player);
-    interval(this.checkinInterval)
-      .pipe(takeWhile(() => this.player != null))
-      .subscribe(() => {
-        this.playersStore.doc(this.player.uid).update({
-          lastCheckin: Date.now()
-        });
-      });
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.player));
+    } catch {
+      // ignore storage errors
+    }
   }
 
   async logout(): Promise<void> {
-    await this.afAuth.signOut();
     this.player = null;
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch {
+      // ignore storage errors
+    }
   }
 
+  private loadPlayer(): void {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const parsed = JSON.parse(stored) as Player;
+        if (parsed && parsed.name) {
+          this.player = parsed;
+        }
+      }
+    } catch {
+      this.player = null;
+    }
+  }
 }

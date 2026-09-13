@@ -1,14 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren, inject } from '@angular/core';
-import { isEqual, range, times, zipWith } from 'lodash';
-import { takeUntil } from 'rxjs/operators';
-import { UnsubscribeDirective } from '../../../shared/unsubscribe.directive';
+import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
+import { isEqual, range, times } from 'lodash';
 import { BoxComponent } from '../box/box.component';
-import { GameService } from '../../../services/game.service';
-import { MultiplayerService } from '../../../services/multiplayer.service';
-import { AuthService } from '../../../services/auth.service';
 import { zeros } from '../../../shared/utils';
-
-
 
 @Component({
     selector: 'bin-grid',
@@ -16,18 +9,13 @@ import { zeros } from '../../../shared/utils';
     styleUrls: ['./grid.component.less'],
     imports: [BoxComponent]
 })
-export class GridComponent extends UnsubscribeDirective implements OnInit {
-  private gameService = inject(GameService);
-  private multiplayerService = inject(MultiplayerService);
-  private authService = inject(AuthService);
-
+export class GridComponent implements OnInit {
   range: number[] = [];
   rowTot: number[] = [];
   colTot: number[] = [];
   rowTarget: number[] = [];
   colTarget: number[] = [];
   success = false;
-  opponentWin = false;
 
   @Input() stopped: boolean;
   @Input() size: number;
@@ -38,12 +26,6 @@ export class GridComponent extends UnsubscribeDirective implements OnInit {
 
   ngOnInit(): void {
     this.range = range(this.size);
-    this.multiplayerService.opponentWin()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(() => {
-        this.success = false;
-        this.opponentWin = true;
-      });
     this.init();
   }
 
@@ -59,12 +41,6 @@ export class GridComponent extends UnsubscribeDirective implements OnInit {
     }
 
     this.grid[row][col] = value;
-    this.gameService.update({
-      player: this.authService.player,
-      grid: this.grid,
-      rowValid: zipWith(this.rowTot, this.rowTarget, (a, b) => a === b),
-      colValid: zipWith(this.colTot, this.colTarget, (a, b) => a === b),
-    });
   }
 
   reset(): void {
@@ -74,7 +50,6 @@ export class GridComponent extends UnsubscribeDirective implements OnInit {
 
   private init(): void {
     this.success = false;
-    this.opponentWin = false;
     this.rowTot = zeros(this.size);
     this.colTot = zeros(this.size);
 
