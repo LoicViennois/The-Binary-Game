@@ -95,18 +95,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "the-binary-game:build"
+            "buildTarget": "the-binary-game:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "the-binary-game:build:production"
+              "buildTarget": "the-binary-game:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "the-binary-game:build"
+            "buildTarget": "the-binary-game:build"
           }
         },
         "lint": {

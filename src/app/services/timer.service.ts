@@ -5,7 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 export class TimerService {
   time: BehaviorSubject<number>;
 
-  private timer: NodeJS.Timer;
+  private timer: ReturnType<typeof setInterval> | null = null;
 
   start(): void {
     if (this.timer != null) {
@@ -19,7 +19,10 @@ export class TimerService {
   }
 
   stop(): void {
-    clearInterval(this.timer);
+    if (this.timer != null) {
+      clearInterval(this.timer);
+      this.timer = null;
+    }
     this.time.complete();
   }
 }
