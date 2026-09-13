@@ -14,8 +14,11 @@ COPY . .
 # Build
 FROM base as build
 
+ARG RAILWAY_GIT_COMMIT_SHA
+ENV RAILWAY_GIT_COMMIT_SHA=$RAILWAY_GIT_COMMIT_SHA
+
 RUN pnpm run lint && \
-    pnpm run build:prod
+    pnpm run build
 
 # Prod
 FROM nginx:stable as prod

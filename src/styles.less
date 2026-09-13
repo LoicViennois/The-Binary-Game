@@ -13,7 +13,11 @@ body {
   margin: 0;
 }
 
-/** Debug **/
-//div {
-//  border: 1px solid black;
-//}
+// Fix modal stacking order for ng-bootstrap with Bootstrap 4
+.modal {
+  z-index: 1060 !important;
+}
+
+.modal-backdrop {
+  z-index: 1055 !important;
+}

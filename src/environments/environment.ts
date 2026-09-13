@@ -1,6 +1,7 @@
-import pkg from '../../package.json';
+import { gitInfo } from './git-info';
 
 export const environment = {
   production: false,
-  version: pkg.version + '-dev'
+  commitSha: gitInfo.commitSha,
+  shortSha: gitInfo.shortSha,
 };

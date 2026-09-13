@@ -11,7 +11,10 @@ import { environment } from '../../../../environments/environment';
 export class AboutComponent {
   activeModal = inject(NgbActiveModal);
 
-  readonly version: string = environment.version;
-
+  readonly commitSha = environment.commitSha;
+  readonly shortSha = environment.shortSha;
+  readonly commitUrl = this.commitSha && this.commitSha !== 'dev'
+    ? `https://github.com/LoicViennois/The-Binary-Game/commit/${this.commitSha}`
+    : 'https://github.com/LoicViennois/The-Binary-Game';
 }
 
