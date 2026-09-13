@@ -7,8 +7,7 @@
   "scripts": {
     "ng": "ng",
     "prebuild": "node scripts/generate-git-info.mjs",
-    "prebuild:prod": "node scripts/generate-git-info.mjs",
-    "build:prod": "ng build --configuration production",
+    "build": "ng build --configuration production",
     "prestart": "node scripts/generate-git-info.mjs",
     "start": "ng serve",
     "prelint": "node scripts/generate-git-info.mjs",
