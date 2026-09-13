@@ -121,9 +121,10 @@
       }
     }
   },
-  "defaultProject": "the-binary-game",
   "cli": {
-    "defaultCollection": "@angular-eslint/schematics",
-    "packageManager": "pnpm"
+    "packageManager": "pnpm",
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

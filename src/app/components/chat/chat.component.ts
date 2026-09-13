@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { MessagesService } from '../../services/messages.service';
 import { AuthService } from '../../services/auth.service';
@@ -12,13 +12,13 @@ import { DbService } from '../../services/db.service';
   styleUrls: ['./chat.component.less']
 })
 export class ChatComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   @ViewChild('message', { static: false }) inputField: ElementRef;
 
   constructor(public messagesService: MessagesService,
               private authService: AuthService,
-              private fb: FormBuilder,
+              private fb: UntypedFormBuilder,
               private dbService: DbService) {
   }
 
