@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/LoicViennois/The-Binary-Game/compare/v1.2.0...v1.3.0) (2026-09-13)
+
+
+### Features
+
+* display only best high score for each user ([3562d56](https://github.com/LoicViennois/The-Binary-Game/commit/3562d5669bff03a6134750986a5158164a9a33a4))
+* remove old high scores ([89acbc8](https://github.com/LoicViennois/The-Binary-Game/commit/89acbc85941be6ff8d5774a3557b2bcf79696573))
+* update to angular 13 ([a1e0f3f](https://github.com/LoicViennois/The-Binary-Game/commit/a1e0f3f73ea0804abfc5a651b658448651148e0c))
+
+
+### Bug Fixes
+
+* update matomo code ([6ce0c79](https://github.com/LoicViennois/The-Binary-Game/commit/6ce0c7997e3ed20446ea33652893d1a2cf13d817))
+
+
+### Performance Improvements
+
+* improve nginx config for pwa ([15cd5ef](https://github.com/LoicViennois/The-Binary-Game/commit/15cd5ef673b0e789c5880c70f6758aa348d946c5))
+* remove healthcheck ([ead7b32](https://github.com/LoicViennois/The-Binary-Game/commit/ead7b32cbdf058680aba4f094c009d288d5d3cbd))
+
 ## [1.3.0](https://github.com/LoicViennois/The-Binary-Game/compare/v1.2.0...v1.3.0) (2022-10-10)
 
 
