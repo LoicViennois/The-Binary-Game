@@ -1,65 +1,15 @@
-<div class="row h-100">
-  <div [class.expanded]="expandedLeft"
-    class="border-right border-secondary h-100 panel panel-left">
-    @if (connected) {
-      <bin-connected-players (playRequest)="onPlayRequest($event)"></bin-connected-players>
-    }
-  </div>
-  @if (connected) {
-    <div (click)="expandedLeft=!expandedLeft"
-      [class.expanded]="expandedLeft"
-      [class.other-expanded]="expandedRight"
-      class="expander expander-left p-2">
-      @if (!expandedLeft) {
-        <i class="fas fa-lg fa-users"></i>
-      }
-      @if (!expandedLeft) {
-        <i class="fas fa-lg fa-chevron-right pl-1"></i>
-      }
-      @if (expandedLeft) {
-        <i class="fas fa-lg fa-chevron-left"></i>
-      }
-    </div>
+<div class="row game-links justify-content-center mt-3">
+  @for (n of [3, 4, 5, 6]; track n) {
+    <button (click)="play(n)"
+      class="btn btn-dark m-2 m-lg-3 game-link">
+      {{ n }} x {{ n }}
+    </button>
   }
-  <div class="col">
-    <div class="row game-links justify-content-center">
-      @for (n of [3, 4, 5, 6]; track n) {
-        <button (click)="play(n)"
-          class="btn btn-dark m-3 game-link">
-          {{ n }} x {{ n }}
-        </button>
-      }
-      <!--large devices only-->
-      @for (n of [7, 8]; track n) {
-        <button (click)="play(n)"
-          class="btn btn-dark m-3 game-link game-link-large">
-          {{ n }} x {{ n }}
-        </button>
-      }
-    </div>
-  </div>
-  @if (connected) {
-    <div (click)="expandedRight=!expandedRight"
-      [class.expanded]="expandedRight"
-      [class.other-expanded]="expandedLeft"
-      class="expander expander-right p-2">
-      @if (!expandedRight) {
-        <i class="fas fa-lg fa-chevron-left pr-1"></i>
-      }
-      @if (!expandedRight) {
-        <i class="fas fa-lg fa-comments"></i>
-      }
-      @if (expandedRight) {
-        <i [class.expanded]="expandedRight" class="fas fa-lg fa-chevron-right"></i>
-      }
-    </div>
+  <!--large devices only-->
+  @for (n of [7, 8]; track n) {
+    <button (click)="play(n)"
+      class="btn btn-dark m-2 m-lg-3 game-link game-link-large">
+      {{ n }} x {{ n }}
+    </button>
   }
-  <div [class.expanded]="expandedRight"
-    class="border-left border-secondary h-100 panel panel-right">
-    @if (connected) {
-      <bin-chat></bin-chat>
-    }
-  </div>
 </div>
-<bin-confirm-modal></bin-confirm-modal>
-<bin-alert-modal></bin-alert-modal>

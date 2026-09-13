@@ -1,15 +1,10 @@
-import { Component, OnDestroy, OnInit, ViewChild, inject } from '@angular/core';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { takeUntil } from 'rxjs/operators';
 
-import { UnsubscribeDirective } from '../../shared/unsubscribe.directive';
 import { GridComponent } from '../../components/game/grid/grid.component';
-import { GridOpponentComponent } from '../../components/game/grid-opponent/grid-opponent.component';
 import { TimerService } from '../../services/timer.service';
 import { HighScoresService } from '../../services/high-scores.service';
 import { AuthService } from '../../services/auth.service';
-import { PlayersService } from '../../services/players.service';
-import { MultiplayerService } from '../../services/multiplayer.service';
 import { Player } from '../../models/player.model';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { HighScoresComponent } from '../../components/game/high-scores/high-scores.component';
@@ -19,34 +14,25 @@ import { HighScoresComponent } from '../../components/game/high-scores/high-scor
     selector: 'bin-game',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.less', '../../shared/panels.less'],
-    imports: [GridOpponentComponent, GridComponent, HighScoresComponent, AsyncPipe, DatePipe]
+    imports: [GridComponent, HighScoresComponent, AsyncPipe, DatePipe]
 })
-export class GameComponent extends UnsubscribeDirective implements OnInit, OnDestroy {
+export class GameComponent implements OnInit {
   timerService = inject(TimerService);
   private route = inject(ActivatedRoute);
   private highScoresService = inject(HighScoresService);
   private authService = inject(AuthService);
-  private playersService = inject(PlayersService);
-  private multiplayerService = inject(MultiplayerService);
   private router = inject(Router);
 
   size: number;
   stopped = false;
   success = false;
-  opponentWin = false;
   winTime: number;
-  expandedLeft = false;
   expandedRight = false;
 
   @ViewChild(GridComponent, { static: true }) grid: GridComponent;
-  @ViewChild(GridOpponentComponent, { static: true }) gridOpponent: GridOpponentComponent;
-
-  get opponent(): Player {
-    return this.multiplayerService.opponent;
-  }
 
   get gameFinished(): boolean {
-    return this.success || this.opponentWin;
+    return this.success;
   }
 
   private get time(): number {
@@ -62,70 +48,24 @@ export class GameComponent extends UnsubscribeDirective implements OnInit, OnDes
       this.size = +params.size;
       this.init();
     });
-    this.multiplayerService.playerWin()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(time => {
-        this.stopped = true;
-        this.success = true;
-        this.opponentWin = false;
-        this.winTime = time;
-      });
-    this.multiplayerService.opponentWin()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(time => {
-        this.stopped = true;
-        this.success = false;
-        this.opponentWin = true;
-        this.winTime = time;
-      });
-    this.multiplayerService.gameRestarting()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(() => {
-        this.reset();
-      });
-    this.multiplayerService.gameEnding()
-      .pipe(takeUntil(this.unsubscribe))
-      .subscribe(() => {
-        this.router.navigate(['/home']).then();
-      });
-    this.playersService.playing().then();
   }
 
   async onCompleted(completed: boolean): Promise<void> {
     if (completed) {
       this.stopTimer();
-      if (this.opponent) {
-        this.multiplayerService.winGame(this.time);
-      } else {
-        this.stopped = true;
-        this.success = true;
-        this.winTime = this.time;
-      }
+      this.stopped = true;
+      this.success = true;
+      this.winTime = this.time;
       await this.saveHighScore();
     }
   }
 
   restart(): void {
     this.grid.reset();
-    if (this.opponent) {
-      this.gridOpponent.reset();
-      this.multiplayerService.restartGame(this.size);
-    }
-    this.init();
-  }
-
-  reset(): void {
-    this.grid.reset();
-    if (this.opponent) {
-      this.gridOpponent.reset();
-    }
     this.init();
   }
 
   endGame(): void {
-    if (this.opponent) {
-      this.multiplayerService.endGame(this.size);
-    }
     this.router.navigate(['/home']).then();
   }
 
@@ -134,16 +74,10 @@ export class GameComponent extends UnsubscribeDirective implements OnInit, OnDes
     this.stopped = true;
   }
 
-  ngOnDestroy(): void {
-    this.playersService.notPlaying().then();
-    super.ngOnDestroy();
-  }
-
   private init(): void {
     this.timerService.start();
     this.stopped = false;
     this.success = false;
-    this.opponentWin = false;
   }
 
   private stopTimer(): void {

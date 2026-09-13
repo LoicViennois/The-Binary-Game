@@ -1,8 +1,7 @@
 <div class="row h-100">
 
-  <!--Timer-->
-  <div [class.expanded]="expandedLeft"
-    class="border-right border-secondary h-100 panel panel-left">
+  <!--Timer (desktop only)-->
+  <div class="d-none d-lg-block border-right border-secondary h-100 panel panel-left">
     <h2 class="row justify-content-center pt-2">
       @if (!gameFinished) {
         <span class="timer py-2">{{ timerService.time | async | date:'mm:ss:SS' }}</span>
@@ -11,27 +10,6 @@
         <span class="timer py-2">{{ winTime | date:'mm:ss:SS' }}</span>
       }
     </h2>
-    <div class="row justify-content-center pt-2">
-      @if (opponent) {
-        <div class="ml-3">
-          <bin-grid-opponent [player]="opponent" [size]="size"></bin-grid-opponent>
-        </div>
-      }
-    </div>
-  </div>
-  <div (click)="expandedLeft=!expandedLeft"
-    [class.expanded]="expandedLeft"
-    [class.other-expanded]="expandedRight"
-    class="expander expander-left p-2">
-    @if (!expandedLeft) {
-      <i class="far fa-lg fa-clock"></i>
-    }
-    @if (!expandedLeft) {
-      <i class="fas fa-lg fa-chevron-right pl-1"></i>
-    }
-    @if (expandedLeft) {
-      <i class="fas fa-lg fa-chevron-left"></i>
-    }
   </div>
 
   <!--Game-->
@@ -40,7 +18,7 @@
       <bin-grid (completed)="onCompleted($event)" [size]="size" [stopped]="stopped"></bin-grid>
     </div>
     <div class="pt-2">
-      @if (!opponent && !stopped) {
+      @if (!stopped) {
         <button (click)="stopGame()" class="btn btn-danger mx-2">
           <i class="fas fa-ban"></i>
           Stop
@@ -76,7 +54,6 @@
   <!--High scores-->
   <div (click)="expandedRight=!expandedRight"
     [class.expanded]="expandedRight"
-    [class.other-expanded]="expandedLeft"
     class="expander expander-right p-2">
     @if (!expandedRight) {
       <i class="fas fa-lg fa-chevron-left pr-1"></i>

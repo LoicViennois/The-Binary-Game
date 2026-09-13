@@ -1,6 +1,5 @@
 allowBuilds:
   '@angular/cli': true
-  '@firebase/util': true
   '@fortawesome/fontawesome-free': true
   '@parcel/watcher': true
   core-js: true
