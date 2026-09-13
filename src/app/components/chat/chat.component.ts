@@ -4,7 +4,7 @@ import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule }
 import { MessagesService } from '../../services/messages.service';
 import { AuthService } from '../../services/auth.service';
 import { DbService } from '../../services/db.service';
-import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { AsyncPipe } from '@angular/common';
 import { MessageComponent } from '../message/message.component';
 
 
@@ -12,7 +12,7 @@ import { MessageComponent } from '../message/message.component';
     selector: 'bin-chat',
     templateUrl: './chat.component.html',
     styleUrls: ['./chat.component.less'],
-    imports: [NgIf, NgFor, MessageComponent, ReactiveFormsModule, AsyncPipe]
+    imports: [MessageComponent, ReactiveFormsModule, AsyncPipe]
 })
 export class ChatComponent implements OnInit {
   messagesService = inject(MessagesService);

@@ -11,7 +11,7 @@ import { AuthService } from '../../services/auth.service';
 import { PlayersService } from '../../services/players.service';
 import { MultiplayerService } from '../../services/multiplayer.service';
 import { Player } from '../../models/player.model';
-import { NgIf, AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { HighScoresComponent } from '../../components/game/high-scores/high-scores.component';
 
 
@@ -19,7 +19,7 @@ import { HighScoresComponent } from '../../components/game/high-scores/high-scor
     selector: 'bin-game',
     templateUrl: './game.component.html',
     styleUrls: ['./game.component.less', '../../shared/panels.less'],
-    imports: [NgIf, GridOpponentComponent, GridComponent, HighScoresComponent, AsyncPipe, DatePipe]
+    imports: [GridOpponentComponent, GridComponent, HighScoresComponent, AsyncPipe, DatePipe]
 })
 export class GameComponent extends UnsubscribeDirective implements OnInit, OnDestroy {
   timerService = inject(TimerService);

@@ -2,14 +2,14 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 
 import { AuthService } from '../../services/auth.service';
-import { NgIf, SlicePipe } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 
 
 @Component({
     selector: 'bin-header',
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.less'],
-    imports: [NgIf, RouterLink, SlicePipe]
+    imports: [RouterLink, SlicePipe]
 })
 export class HeaderComponent implements OnInit {
   authService = inject(AuthService);

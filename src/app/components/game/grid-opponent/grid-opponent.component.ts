@@ -9,7 +9,7 @@ import { GameService } from '../../../services/game.service';
 import { MultiplayerService } from '../../../services/multiplayer.service';
 import { Game } from '../../../models/game.model';
 import { fill, zeros } from '../../../shared/utils';
-import { NgIf, NgFor } from '@angular/common';
+
 
 
 @Component({
@@ -19,7 +19,7 @@ import { NgIf, NgFor } from '@angular/common';
         './grid-opponent.component.less',
         '../grid/grid.component.less'
     ],
-    imports: [NgIf, NgFor, BoxComponent]
+    imports: [BoxComponent]
 })
 export class GridOpponentComponent extends UnsubscribeDirective implements OnInit {
   private gameService = inject(GameService);

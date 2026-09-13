@@ -1,17 +1,19 @@
 <h3>High scores</h3>
 <table class="table table-sm">
   <thead>
-  <tr>
-    <th class="text-right" scope="col">#</th>
-    <th scope="col">Time</th>
-    <th class="text-left" scope="col">Name</th>
-  </tr>
+    <tr>
+      <th class="text-right" scope="col">#</th>
+      <th scope="col">Time</th>
+      <th class="text-left" scope="col">Name</th>
+    </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let score of highScoresService.bestHighScores | async ; let i = index">
-    <th class="text-right" scope="row">{{ i + 1 }}</th>
-    <td class="text-center">{{ score.time | date:'mm:ss:SS' }}</td>
-    <td class="text-left">{{ score.user.name }}</td>
-  </tr>
+    @for (score of highScoresService.bestHighScores | async ; track score; let i = $index) {
+      <tr>
+        <th class="text-right" scope="row">{{ i + 1 }}</th>
+        <td class="text-center">{{ score.time | date:'mm:ss:SS' }}</td>
+        <td class="text-left">{{ score.user.name }}</td>
+      </tr>
+    }
   </tbody>
 </table>

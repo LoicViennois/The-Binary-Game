@@ -1,34 +1,48 @@
 <div>
   {{ player.name }}
-  <span *ngIf="opponentWin"> wins!</span>
-  <span *ngIf="success"> loses!</span>
+  @if (opponentWin) {
+    <span> wins!</span>
+  }
+  @if (success) {
+    <span> loses!</span>
+  }
 </div>
 <div class="wrapper">
   <table class="scale mt-3">
-    <tr *ngFor="let r of range">
-      <td *ngFor="let c of range">
-        <bin-box [disabled]="true" [value]="grid[r][c]"></bin-box>
-      </td>
-      <td class="total total-right">
-        <div [class.valid]="rowValid[r]">
-          X
-        </div>
-      </td>
-    </tr>
+    @for (r of range; track r) {
+      <tr>
+        @for (c of range; track c) {
+          <td>
+            <bin-box [disabled]="true" [value]="grid[r][c]"></bin-box>
+          </td>
+        }
+        <td class="total total-right">
+          <div [class.valid]="rowValid[r]">
+            X
+          </div>
+        </td>
+      </tr>
+    }
     <tr>
-      <td *ngFor="let c of range"
+      @for (c of range; track c) {
+        <td
           class="total total-bottom">
-        <div [class.valid]="colValid[c]">
-          X
-        </div>
-      </td>
+          <div [class.valid]="colValid[c]">
+            X
+          </div>
+        </td>
+      }
       <td></td>
     </tr>
   </table>
-  <div *ngIf="opponentWin" class="scale overlay d-flex justify-content-center align-items-center">
-    <i class="fas fa-check fa-5x green"></i>
-  </div>
-  <div *ngIf="success" class="scale overlay d-flex justify-content-center align-items-center">
-    <i class="fas fa-times fa-5x red"></i>
-  </div>
+  @if (opponentWin) {
+    <div class="scale overlay d-flex justify-content-center align-items-center">
+      <i class="fas fa-check fa-5x green"></i>
+    </div>
+  }
+  @if (success) {
+    <div class="scale overlay d-flex justify-content-center align-items-center">
+      <i class="fas fa-times fa-5x red"></i>
+    </div>
+  }
 </div>

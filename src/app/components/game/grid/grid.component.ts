@@ -7,14 +7,14 @@ import { GameService } from '../../../services/game.service';
 import { MultiplayerService } from '../../../services/multiplayer.service';
 import { AuthService } from '../../../services/auth.service';
 import { zeros } from '../../../shared/utils';
-import { NgFor, NgIf } from '@angular/common';
+
 
 
 @Component({
     selector: 'bin-grid',
     templateUrl: './grid.component.html',
     styleUrls: ['./grid.component.less'],
-    imports: [NgFor, BoxComponent, NgIf]
+    imports: [BoxComponent]
 })
 export class GridComponent extends UnsubscribeDirective implements OnInit {
   private gameService = inject(GameService);
