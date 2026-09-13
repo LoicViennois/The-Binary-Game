@@ -11,6 +11,7 @@
     "build:prod": "ng build --configuration production",
     "lint": "ng lint"
   },
+  "packageManager": "pnpm@12.3.4",
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.11",
