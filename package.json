@@ -4,6 +4,14 @@
   "description": "The Binary Game",
   "license": "GPLv3",
   "main": "main.js",
+  "packageManager": "pnpm@12.3.4",
+  "devEngines": {
+    "runtime": {
+      "name": "node",
+      "version": "26.8.1",
+      "onFail": "download"
+    }
+  },
   "scripts": {
     "ng": "ng",
     "prebuild": "node scripts/generate-git-info.mjs",
@@ -13,7 +21,6 @@
     "prelint": "node scripts/generate-git-info.mjs",
     "lint": "ng lint"
   },
-  "packageManager": "pnpm@12.3.4",
   "private": true,
   "dependencies": {
     "@angular/animations": "^21.2.23",
