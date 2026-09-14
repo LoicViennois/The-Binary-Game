@@ -1,8 +1,5 @@
-version: '2.4'
-
 services:
-  client:
-    image: ghcr.io/loicviennois/the-binary-game-client
+  the-binary-game:
     build: .
     ports:
-      - '8080:80'
+      - "8080:3000"
