@@ -7,6 +7,8 @@ export class LoginPage {
   readonly playAsUserButton: Locator;
   readonly githubLink: Locator;
   readonly aboutButton: Locator;
+  readonly buildInfo: Locator;
+  readonly buildInfoLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -15,6 +17,8 @@ export class LoginPage {
     this.playAsUserButton = page.locator('button:has-text("Play as")');
     this.githubLink = page.locator('bin-header a[href*="github.com/LoicViennois/The-Binary-Game"]');
     this.aboutButton = page.locator('bin-header a:has(.fa-info-circle)');
+    this.buildInfo = page.locator('.build-info');
+    this.buildInfoLink = page.locator('.build-info a');
   }
 
   async goto(): Promise<void> {
