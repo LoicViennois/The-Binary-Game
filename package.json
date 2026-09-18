@@ -18,14 +18,9 @@
     "build": "ng build --configuration production",
     "prestart": "node scripts/generate-git-info.mjs",
     "start": "ng serve",
-    "prelint": "node scripts/generate-git-info.mjs",
     "lint": "ng lint",
-    "pretest": "node scripts/generate-git-info.mjs",
-    "test": "playwright test",
-    "pree2e": "node scripts/generate-git-info.mjs",
     "e2e": "playwright test",
-    "e2e:ui": "playwright test --ui",
-    "e2e:headed": "playwright test --headed"
+    "e2e:ui": "playwright test --ui"
   },
   "private": true,
   "dependencies": {
