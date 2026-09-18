@@ -1,5 +1,0 @@
-services:
-  the-binary-game:
-    build: .
-    ports:
-      - "8080:3000"
