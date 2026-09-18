@@ -19,7 +19,13 @@
     "prestart": "node scripts/generate-git-info.mjs",
     "start": "ng serve",
     "prelint": "node scripts/generate-git-info.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "pretest": "node scripts/generate-git-info.mjs",
+    "test": "playwright test",
+    "pree2e": "node scripts/generate-git-info.mjs",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui",
+    "e2e:headed": "playwright test --headed"
   },
   "private": true,
   "dependencies": {
@@ -49,6 +55,7 @@
     "@angular-eslint/template-parser": "21.4.0",
     "@angular/cli": "^21.2.24",
     "@angular/compiler-cli": "^21.2.23",
+    "@playwright/test": "^1.63.0",
     "@types/lodash": "^4.14.161",
     "@types/node": "^24.2.1",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
