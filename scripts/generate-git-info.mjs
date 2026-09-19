@@ -6,7 +6,13 @@ import { dirname, resolve } from 'node:path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-const commitSha = execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim();
+let commitSha = 'dev';
+
+try {
+  commitSha = execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim();
+} catch {
+  // Builds from source archives do not include Git metadata.
+}
 
 const shortSha = commitSha && commitSha !== 'dev' ? commitSha.slice(0, 7) : 'dev';
 
@@ -17,6 +23,6 @@ export const gitInfo = {
 };
 `;
 
-const targetPath = resolve(__dirname, '../src/environments/git-info.ts');
+const targetPath = resolve(__dirname, '../src/git-info.ts');
 writeFileSync(targetPath, content.replace(/\r\n/g, '\n'), 'utf8');
 console.log(`Generated git-info.ts with commit: ${commitSha} (${shortSha})`);

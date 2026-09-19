@@ -38,6 +38,7 @@ yarn-error.log
 pnpm-debug.log*
 testem.log
 /typings
+*.tsbuildinfo
 
 # e2e
 /e2e/*.js
@@ -48,4 +49,4 @@ testem.log
 Thumbs.db
 
 # Generated build files
-/src/environments/git-info.ts
+/src/git-info.ts

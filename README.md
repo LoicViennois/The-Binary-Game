@@ -1,7 +1,27 @@
 # The Binary Game
 
-<a href="https://binary.loicviennois.com/" target="_blank"><img src="src/assets/icons/icon-192x192.png" width="192" alt="logo" /></a>
+<a href="https://binary.loicviennois.com/" target="_blank"><img src="public/icons/icon-192x192.png" width="192" alt="The Binary Game logo" /></a>
 
-The Binary Game is a game to play with binary numbers, solo or with friends !
+The Binary Game is a fast-paced puzzle for learning binary numbers, solo or with friends.
 
-The Binary Game is built on [Angular 21](https://angular.dev).
+## Stack
+
+- React 19 and TypeScript
+- Vite
+- Tailwind CSS 4
+- Vite PWA
+
+## Development
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Quality checks:
+
+```bash
+pnpm lint
+pnpm test
+pnpm build
+```
