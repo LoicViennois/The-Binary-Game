@@ -1,60 +1,53 @@
 {
   "name": "the-binary-game",
+  "version": "2.0.0",
+  "private": true,
   "author": "Loïc Viennois",
-  "description": "The Binary Game",
-  "license": "GPLv3",
-  "main": "main.js",
+  "description": "A fast-paced puzzle game for learning binary numbers",
+  "license": "GPL-3.0-only",
+  "type": "module",
   "packageManager": "pnpm@12.3.4",
-  "devEngines": {
-    "runtime": {
-      "name": "node",
-      "version": "24.21.0",
-      "onFail": "download"
-    }
+  "engines": {
+    "node": ">=24"
   },
   "scripts": {
-    "ng": "ng",
+    "predev": "node scripts/generate-git-info.mjs",
     "prebuild": "node scripts/generate-git-info.mjs",
-    "build": "ng build --configuration production",
+    "build": "tsc -b && vite build",
+    "dev": "vite",
     "prestart": "node scripts/generate-git-info.mjs",
-    "start": "ng serve",
+    "start": "vite --host 0.0.0.0",
     "prelint": "node scripts/generate-git-info.mjs",
-    "lint": "ng lint"
+    "lint": "eslint .",
+    "pretest": "node scripts/generate-git-info.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
-  "private": true,
   "dependencies": {
-    "@angular/animations": "^21.2.23",
-    "@angular/common": "^21.2.23",
-    "@angular/compiler": "^21.2.23",
-    "@angular/core": "^21.2.23",
-    "@angular/forms": "^21.2.23",
-    "@angular/platform-browser": "^21.2.23",
-    "@angular/platform-browser-dynamic": "^21.2.23",
-    "@angular/router": "^21.2.23",
-    "@angular/service-worker": "^21.2.23",
-    "@fortawesome/fontawesome-free": "^5.14.0",
-    "@ng-bootstrap/ng-bootstrap": "^20.0.0",
-    "bootstrap": "~4.6.2",
-    "lodash": "~4.17.20",
-    "rxjs": "~7.8.2",
-    "tslib": "^2.0.0",
-    "zone.js": "~0.15.1"
+    "lucide-react": "^0.545.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^21.2.24",
-    "@angular-eslint/builder": "21.4.0",
-    "@angular-eslint/eslint-plugin": "21.4.0",
-    "@angular-eslint/eslint-plugin-template": "21.4.0",
-    "@angular-eslint/schematics": "21.4.0",
-    "@angular-eslint/template-parser": "21.4.0",
-    "@angular/cli": "^21.2.24",
-    "@angular/compiler-cli": "^21.2.23",
-    "@types/lodash": "^4.14.161",
-    "@types/node": "^24.2.1",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "eslint": "^8.57.0",
-    "ts-node": "^10.9.1",
-    "typescript": "~5.9.3"
+    "@vitejs/plugin-react": "^5.0.4",
+    "@eslint/js": "^9.37.0",
+    "@tailwindcss/vite": "^4.1.14",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/node": "^24.7.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "eslint": "^9.37.0",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^16.4.0",
+    "jsdom": "^27.0.0",
+    "tailwindcss": "^4.1.14",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.46.1",
+    "vite": "^7.1.10",
+    "vite-plugin-pwa": "^1.1.0",
+    "vitest": "^3.2.4"
   }
 }
