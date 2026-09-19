@@ -96,7 +96,7 @@ export function GamePage() {
         {/* Left Column: Timer & Controls (Desktop) / Header bar (Mobile) */}
         <div className="flex flex-col items-center lg:items-start gap-4 lg:w-72 order-1 lg:order-1">
           <div className="flex flex-col items-center lg:items-start">
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 mb-1">
               Elapsed Time
             </span>
             <TimerDisplay timeMs={winTime !== null ? winTime : elapsed} isWinningTime={isCompleted} />
@@ -118,7 +118,7 @@ export function GamePage() {
                 <button
                   onClick={handleRestart}
                   type="button"
-                  className="flex items-center gap-2 rounded-xl bg-slate-900 px-4 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-slate-800 transition-colors active:scale-98"
+                  className="flex items-center gap-2 rounded-xl bg-slate-900 dark:bg-indigo-600 px-4 py-2.5 text-sm font-semibold text-white shadow-xs hover:bg-slate-800 dark:hover:bg-indigo-500 transition-colors active:scale-98"
                 >
                   <RotateCcw className="h-4 w-4" />
                   Restart
@@ -126,7 +126,7 @@ export function GamePage() {
                 <button
                   onClick={handleHome}
                   type="button"
-                  className="flex items-center gap-2 rounded-xl border border-stone-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-stone-50 transition-colors active:scale-98"
+                  className="flex items-center gap-2 rounded-xl border border-stone-200 dark:border-slate-700 bg-white dark:bg-slate-800 px-4 py-2.5 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-stone-50 dark:hover:bg-slate-700 transition-colors active:scale-98"
                 >
                   <Home className="h-4 w-4" />
                   Home
@@ -139,10 +139,10 @@ export function GamePage() {
         {/* Center Column: Binary Grid */}
         <div className="flex flex-col items-center justify-center order-2 lg:order-2 flex-1">
           <div className="mb-3 text-center">
-            <h1 className="text-lg font-bold text-slate-800">
+            <h1 className="text-lg font-bold text-slate-800 dark:text-white">
               {size}&times;{size} Binary Grid
             </h1>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Match the decimal target values for every row and column
             </p>
           </div>
@@ -172,7 +172,7 @@ export function GamePage() {
           onClick={() => setMobileScoresOpen(true)}
           type="button"
           aria-label="Open Leaderboard"
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-amber-300 shadow-lg border border-slate-700 active:scale-95 transition-transform"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-900 text-amber-300 dark:bg-indigo-600 dark:text-white shadow-lg border border-slate-700 dark:border-indigo-500 active:scale-95 transition-transform"
         >
           <Trophy className="h-6 w-6" />
         </button>
@@ -180,21 +180,21 @@ export function GamePage() {
 
       {/* Mobile Drawer / Slide-in Panel for High Scores */}
       {mobileScoresOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-900/50 backdrop-blur-xs lg:hidden animate-in fade-in">
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-slate-950/60 backdrop-blur-xs lg:hidden animate-in fade-in">
           <div
             onClick={(e) => e.stopPropagation()}
-            className="w-full max-w-lg rounded-t-3xl bg-white p-5 shadow-2xl border-t border-stone-200 animate-in slide-in-from-bottom duration-200"
+            className="w-full max-w-lg rounded-t-3xl bg-white dark:bg-slate-900 p-5 shadow-2xl border-t border-stone-200 dark:border-slate-800 animate-in slide-in-from-bottom duration-200"
           >
-            <div className="flex items-center justify-between pb-3 border-b border-stone-100">
+            <div className="flex items-center justify-between pb-3 border-b border-stone-100 dark:border-slate-800">
               <div className="flex items-center gap-2">
-                <Trophy className="h-5 w-5 text-amber-600" />
-                <h3 className="font-bold text-slate-900">Leaderboard</h3>
+                <Trophy className="h-5 w-5 text-amber-600 dark:text-amber-400" />
+                <h3 className="font-bold text-slate-900 dark:text-white">Leaderboard</h3>
               </div>
               <button
                 onClick={() => setMobileScoresOpen(false)}
                 type="button"
                 aria-label="Close leaderboard"
-                className="rounded-lg p-1 text-slate-400 hover:bg-stone-100"
+                className="rounded-lg p-1 text-slate-400 hover:bg-stone-100 dark:hover:bg-slate-800"
               >
                 <X className="h-5 w-5" />
               </button>

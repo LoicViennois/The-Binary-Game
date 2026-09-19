@@ -34,7 +34,7 @@ export function Grid({
   const cellSizeClass = getCellSizeClasses();
 
   return (
-    <div className="relative inline-block select-none rounded-2xl bg-stone-200/50 p-3 sm:p-5 shadow-sm border border-stone-300/80 backdrop-blur-xs">
+    <div className="relative inline-block select-none rounded-2xl bg-stone-200/50 dark:bg-slate-900/80 p-3 sm:p-5 shadow-sm border border-stone-300/80 dark:border-slate-800 backdrop-blur-xs transition-colors">
       <div className="flex flex-col gap-2 sm:gap-2.5">
         {/* Rows */}
         {grid.map((row, rIdx) => {
@@ -62,8 +62,8 @@ export function Grid({
                   transition-all duration-200 shadow-xs border
                   ${
                     isRowValid
-                      ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-600/30 scale-102'
-                      : 'bg-stone-100 text-slate-700 border-stone-300'
+                      ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-600/30 dark:bg-emerald-500 dark:border-emerald-400 dark:shadow-emerald-500/30 scale-102'
+                      : 'bg-stone-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-stone-300 dark:border-slate-700'
                   }
                 `}
               >
@@ -74,7 +74,7 @@ export function Grid({
         })}
 
         {/* Column Target Indicators Row */}
-        <div className="flex items-center gap-2 sm:gap-2.5 pt-1 border-t border-stone-300">
+        <div className="flex items-center gap-2 sm:gap-2.5 pt-1 border-t border-stone-300 dark:border-slate-700">
           {colTarget.map((target, cIdx) => {
             const isColValid = (colTot[cIdx] ?? 0) === target;
             return (
@@ -86,8 +86,8 @@ export function Grid({
                   transition-all duration-200 shadow-xs border
                   ${
                     isColValid
-                      ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-600/30 scale-102'
-                      : 'bg-stone-100 text-slate-700 border-stone-300'
+                      ? 'bg-emerald-600 text-white border-emerald-500 shadow-emerald-600/30 dark:bg-emerald-500 dark:border-emerald-400 dark:shadow-emerald-500/30 scale-102'
+                      : 'bg-stone-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border-stone-300 dark:border-slate-700'
                   }
                 `}
               >
@@ -103,7 +103,7 @@ export function Grid({
 
       {/* Overlay when game is stopped or completed */}
       {stopped && (
-        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center rounded-2xl bg-slate-900/40 backdrop-blur-xs transition-opacity animate-in fade-in">
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center rounded-2xl bg-slate-950/60 backdrop-blur-xs transition-opacity animate-in fade-in">
           {success ? (
             <div className="flex h-20 w-20 items-center justify-center rounded-full bg-emerald-500 text-white shadow-xl shadow-emerald-500/40 animate-in zoom-in-75 duration-200">
               <Check className="h-12 w-12 stroke-[3]" />

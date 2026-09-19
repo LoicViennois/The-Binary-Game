@@ -51,28 +51,30 @@ export function LoginPage() {
       <div className="w-full max-w-md space-y-6">
         {/* Welcome Banner */}
         <div className="text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-amber-300 shadow-md">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-900 text-amber-300 dark:bg-indigo-600 dark:text-white shadow-md">
             <Sparkles className="h-7 w-7" />
           </div>
-          <h1 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900">
+          <h1 className="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">
             Welcome to The Binary Game
           </h1>
-          <p className="mt-2 text-sm text-slate-500">
+          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
             A fast-paced binary puzzle. Align the bits, match row and column totals, and beat the clock!
           </p>
         </div>
 
         {/* Existing Player Card */}
         {loggedIn && player && (
-          <div className="rounded-2xl bg-white p-5 shadow-sm border border-stone-200 text-center">
-            <div className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-700">
-              <UserCheck className="h-4 w-4 text-emerald-600" />
-              <span>Signed in as <span className="text-indigo-600 font-bold">{player.name}</span></span>
+          <div className="rounded-2xl bg-white dark:bg-slate-900 p-5 shadow-sm border border-stone-200 dark:border-slate-800 text-center transition-colors">
+            <div className="flex items-center justify-center gap-2 text-sm font-semibold text-slate-700 dark:text-slate-200">
+              <UserCheck className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              <span>
+                Signed in as <span className="text-indigo-600 dark:text-indigo-400 font-bold">{player.name}</span>
+              </span>
             </div>
             <button
               onClick={handleContinue}
               type="button"
-              className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 px-4 py-3 font-semibold text-white shadow-sm hover:bg-slate-800 transition-colors active:scale-98"
+              className="mt-3 flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-indigo-600 px-4 py-3 font-semibold text-white shadow-sm hover:bg-slate-800 dark:hover:bg-indigo-500 transition-colors active:scale-98"
             >
               <Play className="h-4 w-4 fill-current" />
               Play as {player.name}
@@ -81,14 +83,14 @@ export function LoginPage() {
         )}
 
         {/* New / Switch Player Form */}
-        <div className="rounded-2xl bg-white p-6 shadow-sm border border-stone-200">
-          <h2 className="text-base font-semibold text-slate-900">
+        <div className="rounded-2xl bg-white dark:bg-slate-900 p-6 shadow-sm border border-stone-200 dark:border-slate-800 transition-colors">
+          <h2 className="text-base font-semibold text-slate-900 dark:text-white">
             {loggedIn ? 'Or play with a different username' : 'Choose your player username'}
           </h2>
 
           <form onSubmit={handleSubmit} className="mt-4 space-y-4">
             <div>
-              <label htmlFor="username-input" className="block text-xs font-semibold uppercase tracking-wider text-slate-500">
+              <label htmlFor="username-input" className="block text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
                 Username (3-12 characters)
               </label>
               <div className="mt-1.5">
@@ -99,17 +101,17 @@ export function LoginPage() {
                   onChange={handleInputChange}
                   placeholder="e.g. Neo, Ada, Turing"
                   className={`
-                    w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-slate-900 placeholder:text-slate-400
-                    transition-colors focus:outline-hidden focus:ring-2
+                    w-full rounded-xl border px-3.5 py-2.5 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500
+                    transition-colors focus:outline-hidden focus:ring-2 dark:bg-slate-800
                     ${
                       error
-                        ? 'border-rose-300 focus:border-rose-500 focus:ring-rose-200'
-                        : 'border-stone-300 focus:border-indigo-500 focus:ring-indigo-100'
+                        ? 'border-rose-300 dark:border-rose-500 focus:border-rose-500 focus:ring-rose-200 dark:focus:ring-rose-950'
+                        : 'border-stone-300 dark:border-slate-700 focus:border-indigo-500 dark:focus:border-indigo-400 focus:ring-indigo-100 dark:focus:ring-indigo-950'
                     }
                   `}
                 />
               </div>
-              {error && <p className="mt-1.5 text-xs text-rose-600">{error}</p>}
+              {error && <p className="mt-1.5 text-xs text-rose-600 dark:text-rose-400">{error}</p>}
             </div>
 
             <button

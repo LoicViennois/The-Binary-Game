@@ -9,6 +9,22 @@
     <meta name="theme-color" content="#d9d5c9" />
     <meta name="description" content="The Binary Game - Puzzle and math challenge with binary numbers" />
 
+    <!-- Theme Initialization (Dark mode by default) -->
+    <script>
+      (function() {
+        try {
+          const stored = localStorage.getItem('tb_theme');
+          if (stored === 'light') {
+            document.documentElement.classList.remove('dark');
+          } else {
+            document.documentElement.classList.add('dark');
+          }
+        } catch {
+          document.documentElement.classList.add('dark');
+        }
+      })();
+    </script>
+
     <!-- Matomo -->
     <script>
       let _paq = window._paq = window._paq || [];
@@ -24,7 +40,7 @@
     </script>
     <!-- End Matomo Code -->
   </head>
-  <body class="min-h-screen bg-stone-100/90 text-slate-800">
+  <body class="min-h-screen bg-stone-100/90 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors">
     <div id="root"></div>
     <noscript>Please enable JavaScript to continue using this application.</noscript>
     <script type="module" src="/src/main.tsx"></script>

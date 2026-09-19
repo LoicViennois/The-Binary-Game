@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './hooks/useAuth';
+import { ThemeProvider } from './hooks/useTheme';
 import { Header } from './components/Header';
 import { ProtectedRoute } from './components/ProtectedRoute';
 import { LoginPage } from './views/LoginPage';
@@ -11,7 +12,7 @@ function AppRoutes() {
   const { loggedIn } = useAuth();
 
   return (
-    <div className="flex min-h-screen flex-col bg-stone-100/90 text-slate-800 antialiased font-sans selection:bg-indigo-500 selection:text-white">
+    <div className="flex min-h-screen flex-col bg-stone-100/90 dark:bg-slate-950 text-slate-800 dark:text-slate-100 antialiased font-sans selection:bg-indigo-500 selection:text-white transition-colors duration-200">
       <Header />
 
       <main className="flex-1">
@@ -66,9 +67,11 @@ function AppRoutes() {
 export function App() {
   return (
     <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
+      <ThemeProvider>
+        <AuthProvider>
+          <AppRoutes />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   );
 }

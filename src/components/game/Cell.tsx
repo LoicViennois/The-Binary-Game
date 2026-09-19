@@ -22,8 +22,8 @@ export function Cell({ row, col, value, disabled = false, onClick }: CellProps) 
         ${disabled ? 'cursor-not-allowed opacity-80' : 'cursor-pointer active:scale-95 hover:shadow-sm'}
         ${
           isOne
-            ? 'bg-slate-900 text-amber-300 ring-2 ring-slate-800 shadow-slate-900/20'
-            : 'bg-white text-slate-700 border border-stone-300 hover:border-stone-400 hover:bg-stone-50'
+            ? 'bg-slate-900 text-amber-300 ring-2 ring-slate-800 shadow-slate-900/20 dark:bg-indigo-600 dark:text-white dark:ring-indigo-500 dark:shadow-indigo-500/25'
+            : 'bg-white text-slate-700 border border-stone-300 hover:border-stone-400 hover:bg-stone-50 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700 dark:hover:border-slate-600 dark:hover:bg-slate-700/60'
         }
       `}
     >
