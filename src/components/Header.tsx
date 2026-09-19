@@ -53,9 +53,9 @@ export function Header() {
               className="inline-flex h-9 w-9 items-center justify-center rounded-xl text-slate-600 hover:bg-stone-200/60 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white transition-colors"
             >
               {theme === 'dark' ? (
-                <Sun className="h-4.5 w-4.5 text-amber-400" />
+                <Sun className="h-4.5 w-4.5 text-slate-400 dark:text-slate-300" />
               ) : (
-                <Moon className="h-4.5 w-4.5 text-slate-700" />
+                <Moon className="h-4.5 w-4.5 text-slate-700 dark:text-slate-300" />
               )}
             </button>
 
