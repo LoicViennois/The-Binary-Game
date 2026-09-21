@@ -151,9 +151,6 @@ importers:
       tslib:
         specifier: ^2.0.0
         version: 2.4.0
-      zone.js:
-        specifier: ~0.15.1
-        version: 0.15.1
     devDependencies:
       '@angular-devkit/build-angular':
         specifier: ^21.2.24
@@ -10587,4 +10584,5 @@ snapshots:
 
   zod@4.3.6: {}
 
-  zone.js@0.15.1: {}
+  zone.js@0.15.1:
+    optional: true

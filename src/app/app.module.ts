@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ApplicationRef, DoBootstrap, NgModule, isDevMode } from '@angular/core';
+import { ApplicationRef, DoBootstrap, NgModule, isDevMode, provideZonelessChangeDetection } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
@@ -46,6 +46,7 @@ import { AboutComponent } from './components/modals/about/about.component';
         AboutComponent
     ],
     providers: [
+        provideZonelessChangeDetection(),
         AuthGuard,
         AuthService,
         HighScoresService,

@@ -40,7 +40,6 @@
             "outputPath": "dist/the-binary-game",
             "index": "src/index.html",
             "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/assets",
