@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, QueryList, ViewChildren } from '@angular/core';
-import { isEqual, range, times } from 'lodash';
 import { BoxComponent } from '../box/box.component';
-import { zeros } from '../../../shared/utils';
+import { arraysEqual, range, zeros } from '../../../shared/utils';
 
 @Component({
     selector: 'bin-grid',
@@ -35,7 +34,7 @@ export class GridComponent implements OnInit {
     this.rowTot[row] += mul * 2 ** (this.size - col - 1);
     this.colTot[col] += mul * 2 ** (this.size - row - 1);
 
-    this.success = isEqual(this.rowTot, this.rowTarget) && isEqual(this.colTot, this.colTarget);
+    this.success = arraysEqual(this.rowTot, this.rowTarget) && arraysEqual(this.colTot, this.colTarget);
     if (this.success) {
       this.completed.emit(this.success);
     }
@@ -53,10 +52,7 @@ export class GridComponent implements OnInit {
     this.rowTot = zeros(this.size);
     this.colTot = zeros(this.size);
 
-    this.grid = [];
-    times(this.size, () => {
-      this.grid.push(zeros(this.size));
-    });
+    this.grid = Array.from({ length: this.size }, () => zeros(this.size));
 
     do {
       this.rowTarget = zeros(this.size);
