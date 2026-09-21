@@ -14,7 +14,7 @@ export class AboutModalPage {
     this.page = page;
     this.modal = page.locator('.modal-content');
     this.title = this.modal.locator('.modal-title');
-    this.closeButton = this.modal.locator('.modal-header button.close');
+    this.closeButton = this.modal.locator('.modal-header button.btn-close');
     this.commitLink = this.modal.locator('a[aria-label="commit"]');
     this.gplLicenseLink = this.modal.locator('a[href*="gnu.org/licenses/gpl"]');
     this.githubIssuesLink = this.modal.locator('a[href*="github.com/LoicViennois/The-Binary-Game/issues"]');

@@ -3,7 +3,7 @@
     <div class="row justify-content-center mt-3">
       <div class="col">
         <button class="btn btn-dark" routerLink="/home">
-          <i class="fas fa-play pr-1"></i>
+          <i class="fas fa-play pe-1"></i>
           Play as {{ username }}
         </button>
       </div>
@@ -12,8 +12,8 @@
 }
 <div class="row justify-content-center mt-3">
   <form [formGroup]="form" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="username">Username</label>
+    <div class="mb-3">
+      <label for="username" class="form-label">Username</label>
       <input [class.is-invalid]="form.touched && !form.valid"
         class="form-control"
         formControlName="username"
@@ -23,7 +23,7 @@
     <button [disabled]="!form.valid"
       class="btn btn-dark"
       type="submit">
-      <i class="fas fa-play pr-1"></i>
+      <i class="fas fa-play pe-1"></i>
       Play
     </button>
   </form>
