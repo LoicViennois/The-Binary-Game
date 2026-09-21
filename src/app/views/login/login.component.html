@@ -11,7 +11,7 @@
   </div>
 }
 <div class="row justify-content-center mt-3">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="col-auto">
     <div class="mb-3">
       <label for="username" class="form-label">Username</label>
       <input [class.is-invalid]="form.touched && !form.valid"
