@@ -1,17 +1,11 @@
-import { enableProdMode, provideZoneChangeDetection } from '@angular/core';
+import { isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { environment } from './environments/environment';
 import { AppModule } from './app/app.module';
-
-
-if (environment.production) {
-  enableProdMode();
-}
 
 platformBrowserDynamic().bootstrapModule(AppModule, { applicationProviders: [provideZoneChangeDetection()], })
   .then(() => {
-    if ('serviceWorker' in navigator && environment.production) {
+    if ('serviceWorker' in navigator && !isDevMode()) {
       navigator.serviceWorker.register('./ngsw-worker.js').then();
     }
   })

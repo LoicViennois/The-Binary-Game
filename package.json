@@ -18,8 +18,9 @@
     "build": "ng build --configuration production",
     "prestart": "node scripts/generate-git-info.mjs",
     "start": "ng serve",
-    "prelint": "node scripts/generate-git-info.mjs",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "e2e": "playwright test",
+    "e2e:ui": "playwright test --ui"
   },
   "private": true,
   "dependencies": {
@@ -49,8 +50,9 @@
     "@angular-eslint/template-parser": "21.4.0",
     "@angular/cli": "^21.2.24",
     "@angular/compiler-cli": "^21.2.23",
+    "@playwright/test": "^1.63.0",
     "@types/lodash": "^4.14.161",
-    "@types/node": "^24.2.1",
+    "@types/node": "^24.13.5",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
     "eslint": "^8.57.0",

@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ApplicationRef, DoBootstrap, NgModule } from '@angular/core';
+import { ApplicationRef, DoBootstrap, NgModule, isDevMode } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
-import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HeaderComponent } from './components/header/header.component';
@@ -31,7 +30,7 @@ import { AboutComponent } from './components/modals/about/about.component';
         AppRoutingModule,
         NgbModalModule,
         ServiceWorkerModule.register('ngsw-worker.js', {
-            enabled: environment.production,
+            enabled: !isDevMode(),
             // Register the ServiceWorker as soon as the application is stable
             // or after 30 seconds (whichever comes first).
             registrationStrategy: 'registerWhenStable:30000'
