@@ -52,7 +52,7 @@ export class GridComponent implements OnInit {
     this.rowTot = zeros(this.size);
     this.colTot = zeros(this.size);
 
-    this.grid = Array.from({ length: this.size }, () => zeros(this.size));
+    this.grid = range(this.size).map(() => zeros(this.size));
 
     do {
       this.rowTarget = zeros(this.size);
