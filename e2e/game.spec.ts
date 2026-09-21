@@ -25,13 +25,13 @@ test.describe('Game Play & Puzzles', () => {
   });
 
   test('toggles box state between 0 and 1 on click', async () => {
-    expect(await gamePage.getBoxValue(0, 0)).toBe('0');
+    await expect(gamePage.getBox(0, 0)).toHaveText('0');
 
     await gamePage.clickBox(0, 0);
-    expect(await gamePage.getBoxValue(0, 0)).toBe('1');
+    await expect(gamePage.getBox(0, 0)).toHaveText('1');
 
     await gamePage.clickBox(0, 0);
-    expect(await gamePage.getBoxValue(0, 0)).toBe('0');
+    await expect(gamePage.getBox(0, 0)).toHaveText('0');
   });
 
   test('stops the game and allows restarting or returning home', async ({ page }) => {
