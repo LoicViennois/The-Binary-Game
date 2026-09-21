@@ -2,17 +2,17 @@
 <table class="table table-sm">
   <thead>
     <tr>
-      <th class="text-right" scope="col">#</th>
+      <th class="text-end" scope="col">#</th>
       <th scope="col">Time</th>
-      <th class="text-left" scope="col">Name</th>
+      <th class="text-start" scope="col">Name</th>
     </tr>
   </thead>
   <tbody>
     @for (score of highScoresService.bestHighScores | async ; track score; let i = $index) {
       <tr>
-        <th class="text-right" scope="row">{{ i + 1 }}</th>
+        <th class="text-end" scope="row">{{ i + 1 }}</th>
         <td class="text-center">{{ score.time | date:'mm:ss:SS' }}</td>
-        <td class="text-left">{{ score.user.name }}</td>
+        <td class="text-start">{{ score.user.name }}</td>
       </tr>
     }
   </tbody>
